@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Promo & Penawaran Eksklusif RubyAI — Dapatkan diskon token, bonus staking, dan kode promo spesial.">
+  <title>Promo — RubyAI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar navbar-expand-lg ruby-navbar" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ruby<span class="brand-ai">AI</span></a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto ms-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="produk.html">Token Produk</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://docs.google.com/document/d/1hWPXfQ_zTvxP4cNS-nwSKMGz1EPxm1WU/edit?usp=drive_link&ouid=108765192675620260464&rtpof=true&sd=true" target="_blank" rel="noopener">
+              White Paper
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html">Informasi</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="promo.html">Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="langganan.html">Langganan</a></li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
+          <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== BANNER PROMO ==================== -->
+
+
+  <section class="promo-banner">
+    <div class="container text-center">
+      <span class="sec-tag on-dark mb-3 d-inline-block">Penawaran Aktif</span>
+      <h1 class="banner-title text-white">Promo &amp; Diskon Eksklusif</h1>
+      <p class="text-white-70 mt-2 mb-0">Jangan lewatkan penawaran terbatas ini — stok dan waktu sangat terbatas</p>
+    </div>
+  </section>
+
+  <!-- ==================== PROMO AKTIF ==================== -->
+  <section class="sec-pad">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="sec-tag">Aktif Sekarang</span>
+        <h2 class="sec-title">Promo yang Sedang Berjalan</h2>
+        <p class="sec-sub">Gunakan kode promo sebelum kedaluwarsa</p>
+      </div>
+      <div class="row g-4">
+
+        <!-- Promo 1 -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="promo-card">
+            <div class="promo-badge-hot">🔥 Terpopuler</div>
+            <div class="promo-card-head">
+              <h4>Early Bird Token</h4>
+              <div class="promo-disc">30% OFF</div>
+            </div>
+            <div class="promo-body">
+              <h5 class="promo-title">Diskon 30% Pembelian Token Batch Pertama</h5>
+              <p class="promo-desc">Khusus untuk 500 pembeli pertama batch launching token RubyAI. Harga normal $23 — dapatkan hanya $16.10.</p>
+              <div class="countdown-wrap" id="countdown1">
+                <div class="countdown-box"><span class="countdown-num" id="c1-h">02</span><span class="countdown-lbl">Jam</span></div>
+                <div class="countdown-box"><span class="countdown-num" id="c1-m">45</span><span class="countdown-lbl">Menit</span></div>
+                <div class="countdown-box"><span class="countdown-num" id="c1-s">30</span><span class="countdown-lbl">Detik</span></div>
+              </div>
+              <div class="promo-code-wrap">
+                <span class="promo-code">RUBY30</span>
+                <button class="promo-copy-btn" onclick="salinKode(this, 'RUBY30')" title="Salin kode">
+                  <i class="bi bi-copy"></i>
+                </button>
+              </div>
+              <a href="produk.html" class="btn btn-ruby w-100">Gunakan Promo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo 2 -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="promo-card">
+            <div class="promo-card-head">
+              <h4>Bonus Staking</h4>
+              <div class="promo-disc">+5% APY</div>
+            </div>
+            <div class="promo-body">
+              <h5 class="promo-title">Bonus APY 5% untuk Staking Pertama</h5>
+              <p class="promo-desc">Aktifkan staking untuk pertama kali dan dapatkan bonus 5% APY selama 3 bulan pertama tanpa syarat tambahan.</p>
+              <div class="countdown-wrap">
+                <div class="countdown-box"><span class="countdown-num">14</span><span class="countdown-lbl">Hari</span></div>
+                <div class="countdown-box"><span class="countdown-num">08</span><span class="countdown-lbl">Jam</span></div>
+                <div class="countdown-box"><span class="countdown-num">22</span><span class="countdown-lbl">Menit</span></div>
+              </div>
+              <div class="promo-code-wrap">
+                <span class="promo-code">STAKE5X</span>
+                <button class="promo-copy-btn" onclick="salinKode(this, 'STAKE5X')" title="Salin kode">
+                  <i class="bi bi-copy"></i>
+                </button>
+              </div>
+              <a href="produk.html" class="btn btn-ruby w-100">Mulai Staking</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo 3 -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="promo-card">
+            <div class="promo-card-head">
+              <h4>Wallet Gratis</h4>
+              <div class="promo-disc">FREE</div>
+            </div>
+            <div class="promo-body">
+              <h5 class="promo-title">Wallet Pro Gratis 3 Bulan untuk Member Baru</h5>
+              <p class="promo-desc">Daftar sekarang dan nikmati fitur wallet premium selama 3 bulan penuh tanpa biaya. Berlaku untuk semua akun baru.</p>
+              <div class="countdown-wrap">
+                <div class="countdown-box"><span class="countdown-num">30</span><span class="countdown-lbl">Hari</span></div>
+                <div class="countdown-box"><span class="countdown-num">00</span><span class="countdown-lbl">Jam</span></div>
+                <div class="countdown-box"><span class="countdown-num">00</span><span class="countdown-lbl">Menit</span></div>
+              </div>
+              <div class="promo-code-wrap">
+                <span class="promo-code">NEWWALLET</span>
+                <button class="promo-copy-btn" onclick="salinKode(this, 'NEWWALLET')" title="Salin kode">
+                  <i class="bi bi-copy"></i>
+                </button>
+              </div>
+              <a href="langganan.html" class="btn btn-ruby w-100">Daftar Sekarang</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo 4 -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="promo-card">
+            <div class="promo-card-head">
+              <h4>Bundle Hemat</h4>
+              <div class="promo-disc">20% OFF</div>
+            </div>
+            <div class="promo-body">
+              <h5 class="promo-title">Beli 5 Token, Gratis 1 Token</h5>
+              <p class="promo-desc">Program bundle hemat untuk investor yang ingin membangun portofolio lebih cepat. Berlaku untuk semua jenis token.</p>
+              <div class="countdown-wrap">
+                <div class="countdown-box"><span class="countdown-num">07</span><span class="countdown-lbl">Hari</span></div>
+                <div class="countdown-box"><span class="countdown-num">12</span><span class="countdown-lbl">Jam</span></div>
+                <div class="countdown-box"><span class="countdown-num">44</span><span class="countdown-lbl">Menit</span></div>
+              </div>
+              <div class="promo-code-wrap">
+                <span class="promo-code">BUNDLE6</span>
+                <button class="promo-copy-btn" onclick="salinKode(this, 'BUNDLE6')" title="Salin kode">
+                  <i class="bi bi-copy"></i>
+                </button>
+              </div>
+              <a href="produk.html" class="btn btn-ruby w-100">Gunakan Promo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo 5 -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="promo-card">
+            <div class="promo-card-head">
+              <h4>Upgrade Plan</h4>
+              <div class="promo-disc">15% OFF</div>
+            </div>
+            <div class="promo-body">
+              <h5 class="promo-title">Diskon 15% Upgrade ke Plan Pro atau Enterprise</h5>
+              <p class="promo-desc">Upgrade langganan wallet kamu ke tier lebih tinggi dan hemat 15% untuk pembayaran tahunan.</p>
+              <div class="countdown-wrap">
+                <div class="countdown-box"><span class="countdown-num">21</span><span class="countdown-lbl">Hari</span></div>
+                <div class="countdown-box"><span class="countdown-num">03</span><span class="countdown-lbl">Jam</span></div>
+                <div class="countdown-box"><span class="countdown-num">17</span><span class="countdown-lbl">Menit</span></div>
+              </div>
+              <div class="promo-code-wrap">
+                <span class="promo-code">UPGRD15</span>
+                <button class="promo-copy-btn" onclick="salinKode(this, 'UPGRD15')" title="Salin kode">
+                  <i class="bi bi-copy"></i>
+                </button>
+              </div>
+              <a href="langganan.html" class="btn btn-ruby w-100">Lihat Plan</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo 6 -->
+        <div class="col-sm-6 col-lg-4">
+          <div class="promo-card">
+            <div class="promo-card-head">
+              <h4>Gas Fee Promo</h4>
+              <div class="promo-disc">0 FEE</div>
+            </div>
+            <div class="promo-body">
+              <h5 class="promo-title">Gratis Gas Fee untuk 100 Transaksi Pertama</h5>
+              <p class="promo-desc">Nikmati 100 transaksi pertama tanpa gas fee. Promo ini berlaku otomatis untuk semua akun baru yang mendaftar bulan ini.</p>
+              <div class="countdown-wrap">
+                <div class="countdown-box"><span class="countdown-num">28</span><span class="countdown-lbl">Hari</span></div>
+                <div class="countdown-box"><span class="countdown-num">16</span><span class="countdown-lbl">Jam</span></div>
+                <div class="countdown-box"><span class="countdown-num">55</span><span class="countdown-lbl">Menit</span></div>
+              </div>
+              <div class="promo-code-wrap">
+                <span class="promo-code">NOFEE100</span>
+                <button class="promo-copy-btn" onclick="salinKode(this, 'NOFEE100')" title="Salin kode">
+                  <i class="bi bi-copy"></i>
+                </button>
+              </div>
+              <a href="index.html#launching" class="btn btn-ruby w-100">Daftar Gratis</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROGRAM REFERRAL ==================== -->
+  <section class="sec-pad referral-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="sec-tag on-dark">Referral</span>
+        <h2 class="sec-title text-white">Ajak Teman, Dapat Reward</h2>
+        <p class="sec-sub text-white-70">Setiap referral yang berhasil akan menghasilkan komisi langsung ke wallet kamu</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-sm-6 col-lg-3">
+          <div class="referral-step">
+            <div class="step-num">1</div>
+            <h5 class="text-white fw-bold mb-2">Daftar Akun</h5>
+            <p class="text-white-70 small mb-0">Buat akun RubyAI dan aktifkan fitur referral di dashboard kamu.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="referral-step">
+            <div class="step-num">2</div>
+            <h5 class="text-white fw-bold mb-2">Bagikan Kode</h5>
+            <p class="text-white-70 small mb-0">Salin kode referral unik kamu dan bagikan ke teman, keluarga, atau media sosial.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="referral-step">
+            <div class="step-num">3</div>
+            <h5 class="text-white fw-bold mb-2">Teman Daftar</h5>
+            <p class="text-white-70 small mb-0">Teman kamu mendaftar dan melakukan pembelian token pertama menggunakan kode referralmu.</p>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="referral-step">
+            <div class="step-num">4</div>
+            <h5 class="text-white fw-bold mb-2">Dapat Komisi</h5>
+            <p class="text-white-70 small mb-0">Kamu mendapatkan komisi 10% dari setiap transaksi teman yang berhasil dirujuk, langsung ke wallet.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="index.html#launching" class="btn btn-ruby btn-lg px-5">Mulai Referral Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SYARAT & KETENTUAN ==================== -->
+  <section class="sec-pad" style="background: var(--bg-light);">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="text-center mb-4">
+            <span class="sec-tag">Legal</span>
+            <h2 class="sec-title">Syarat &amp; Ketentuan Promo</h2>
+          </div>
+          <ul class="list-unstyled" style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Setiap kode promo hanya dapat digunakan satu kali per akun.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Promo tidak dapat digabungkan dengan promo lain kecuali disebutkan secara eksplisit.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>RubyAI berhak membatalkan promo sewaktu-waktu tanpa pemberitahuan sebelumnya.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Kode promo hanya berlaku untuk pembelian langsung melalui platform resmi RubyAI.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Nilai promo tidak dapat diuangkan atau dipindahtangankan.</li>
+            <li><i class="bi bi-check-circle-fill text-ruby me-2"></i>Dengan menggunakan kode promo, pengguna dianggap telah membaca dan menyetujui syarat ini.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SUBSCRIBE ==================== -->
+  <section class="subscribe-section">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Temui Kami Di</h5>
+          <p class="text-muted small mb-3">Ikuti kami di media sosial untuk update terbaru</p>
+          <div class="d-flex gap-3">
+            <a href="https://facebook.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com/" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Notifikasi Promo</h5>
+          <p class="text-muted small mb-3">Dapat notifikasi promo terbaru sebelum kehabisan</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Masukkan email kamu" aria-label="Email promo">
+            <button class="btn btn-ruby px-4" type="button">Daftar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 text-center text-md-start">
+        <div class="col-md-4">
+          <h5 class="fw-bold text-white mb-2">RubyAI</h5>
+          <p class="text-secondary small">Solusi Keamanan Uang Digital untuk semua kalangan.<br>Aman, transparan, dan terpercaya.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Navigasi</h6>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="produk.html" class="footer-link">Token Produk</a></li>
+            <li><a href="promo.html" class="footer-link">Promo</a></li>
+            <li><a href="informasi.html" class="footer-link">Informasi</a></li>
+            <li><a href="langganan.html" class="footer-link">Langganan</a></li>
+            <li><a href="index.html#launching" class="footer-link">Grand Launching</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Kontak</h6>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-ruby"></i>Jl. Pekan Baru No. 7, Mojokerto</li>
+            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-ruby"></i>+62 888-307-9611</li>
+            <li><i class="bi bi-envelope-fill me-2 text-ruby"></i>info@rubyai.id</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <p class="text-center text-secondary small mb-0">&copy; 2025 RubyAI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    function salinKode(btn, kode) {
+      navigator.clipboard.writeText(kode).then(() => {
+        const icon = btn.querySelector('i');
+        icon.className = 'bi bi-check-lg';
+        btn.style.color = '#16a34a';
+        setTimeout(() => {
+          icon.className = 'bi bi-copy';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+
+    (function() {
+      let jam = 2, menit = 45, detik = 30;
+      const h = document.getElementById('c1-h');
+      const m = document.getElementById('c1-m');
+      const s = document.getElementById('c1-s');
+      if (!h) return;
+      setInterval(() => {
+        detik--;
+        if (detik < 0) { detik = 59; menit--; }
+        if (menit < 0) { menit = 59; jam--; }
+        if (jam < 0) { jam = 0; menit = 0; detik = 0; }
+        h.textContent = String(jam).padStart(2,'0');
+        m.textContent = String(menit).padStart(2,'0');
+        s.textContent = String(detik).padStart(2,'0');
+      }, 1000);
+    })();
+  </script>
+</body>
+</html>

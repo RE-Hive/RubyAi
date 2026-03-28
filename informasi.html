@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pusat Informasi RubyAI — Berita, update, dan panduan ekosistem token RubyAI terbaru.">
+  <title>Informasi — RubyAI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar navbar-expand-lg ruby-navbar" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ruby<span class="brand-ai">AI</span></a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto ms-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="produk.html">Token Produk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://docs.google.com/document/d/1hWPXfQ_zTvxP4cNS-nwSKMGz1EPxm1WU/edit?usp=drive_link&ouid=108765192675620260464&rtpof=true&sd=true" target="_blank" rel="noopener">
+              White Paper
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="informasi.html">Informasi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="promo.html">Promo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="langganan.html">Langganan</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
+          <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== BANNER INFORMASI ==================== -->
+  <section class="informasi-banner">
+    <div class="container text-center">
+      <span class="sec-tag on-dark mb-3 d-inline-block">Pusat Informasi</span>
+      <h1 class="banner-title text-white">Berita &amp; Update RubyAI</h1>
+      <p class="text-white-70 mt-2 mb-0">Semua yang perlu kamu tahu tentang ekosistem token RubyAI</p>
+    </div>
+  </section>
+
+  <!-- ==================== ARTIKEL GRID ==================== -->
+  <section class="sec-pad">
+    <div class="container">
+
+      <!-- Filter Kategori -->
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-5">
+        <div class="info-filter-wrap">
+          <a href="#" class="info-filter-btn aktif">Semua</a>
+          <a href="#" class="info-filter-btn">Teknologi</a>
+          <a href="#" class="info-filter-btn">Keamanan</a>
+          <a href="#" class="info-filter-btn">Market</a>
+          <a href="#" class="info-filter-btn">Tutorial</a>
+          <a href="#" class="info-filter-btn">Komunitas</a>
+        </div>
+        <span class="text-muted small">8 artikel tersedia</span>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-md-7 col-lg-8">
+          <div class="artikel-card h-100">
+            <img src="block.jpeg" class="w-100" style="height:260px;object-fit:cover;" alt="Blockchain RubyAI">
+            <div class="artikel-body">
+              <div class="artikel-meta">
+                <span class="artikel-tag">Teknologi</span>
+                <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>15 Maret 2025</span>
+              </div>
+              <h3 class="artikel-title" style="font-size:1.2rem;">Blockchain RubyAI: Bagaimana Sistem Kami Menjamin Transparansi Penuh di Setiap Transaksi</h3>
+              <p class="artikel-text">Ekosistem token RubyAI dibangun di atas fondasi blockchain yang dirancang untuk memberikan catatan transaksi yang tidak dapat dimanipulasi. Setiap mutasi aset tercatat secara permanen dan dapat diverifikasi oleh pemilik kapan saja, tanpa perantara.</p>
+              <a href="#" class="btn-read">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 col-lg-4">
+          <div class="row g-4 h-100">
+            <div class="col-12">
+              <div class="artikel-card">
+                <img src="fee.jpeg" class="artikel-img" alt="Gas Fee Murah">
+                <div class="artikel-body">
+                  <div class="artikel-meta">
+                    <span class="artikel-tag">Biaya</span>
+                    <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>10 Mar 2025</span>
+                  </div>
+                  <h5 class="artikel-title">Gas Fee Minimal, Transaksi Maksimal</h5>
+                  <p class="artikel-text">Struktur biaya RubyAI dirancang agar seminimal mungkin tanpa mengorbankan kecepatan dan keamanan jaringan.</p>
+                  <a href="#" class="btn-read">Baca <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="artikel-card">
+                <img src="fast.jpeg" class="artikel-img" alt="Kecepatan Sistem">
+                <div class="artikel-body">
+                  <div class="artikel-meta">
+                    <span class="artikel-tag">Performa</span>
+                    <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>5 Mar 2025</span>
+                  </div>
+                  <h5 class="artikel-title">Benchmark Kecepatan: RubyAI vs Rata-rata Pasar</h5>
+                  <p class="artikel-text">Kami menguji kecepatan konfirmasi transaksi di jaringan RubyAI dan hasilnya cukup mengejutkan.</p>
+                  <a href="#" class="btn-read">Baca <i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Artikel Biasa -->
+      <div class="row g-4">
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="artikel-card">
+            <img src="block.jpeg" class="artikel-img" alt="Panduan Staking">
+            <div class="artikel-body">
+              <div class="artikel-meta">
+                <span class="artikel-tag">Tutorial</span>
+                <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>28 Feb 2025</span>
+              </div>
+              <h5 class="artikel-title">Panduan Lengkap Mulai Staking untuk Pemula</h5>
+              <p class="artikel-text">Langkah demi langkah cara mengaktifkan staking di wallet RubyAI dan mulai menghasilkan APY.</p>
+              <a href="#" class="btn-read">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="artikel-card">
+            <img src="fee.jpeg" class="artikel-img" alt="Market Update">
+            <div class="artikel-body">
+              <div class="artikel-meta">
+                <span class="artikel-tag">Market</span>
+                <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>22 Feb 2025</span>
+              </div>
+              <h5 class="artikel-title">Update Harga Token Maret 2025: Tren dan Proyeksi</h5>
+              <p class="artikel-text">Analisis pergerakan harga token RubyAI bulan ini dan potensi pergerakan ke depan berdasarkan data pasar.</p>
+              <a href="#" class="btn-read">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="artikel-card">
+            <img src="fast.jpeg" class="artikel-img" alt="Keamanan Wallet">
+            <div class="artikel-body">
+              <div class="artikel-meta">
+                <span class="artikel-tag">Keamanan</span>
+                <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>18 Feb 2025</span>
+              </div>
+              <h5 class="artikel-title">5 Langkah Wajib Jaga Keamanan Wallet Digital Kamu</h5>
+              <p class="artikel-text">Tips praktis dari tim keamanan RubyAI untuk memastikan aset digitalmu tetap aman dari ancaman siber.</p>
+              <a href="#" class="btn-read">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="artikel-card">
+            <img src="block.jpeg" class="artikel-img" alt="Komunitas RubyAI">
+            <div class="artikel-body">
+              <div class="artikel-meta">
+                <span class="artikel-tag">Komunitas</span>
+                <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>12 Feb 2025</span>
+              </div>
+              <h5 class="artikel-title">Komunitas RubyAI Tembus 50.000 Anggota Aktif</h5>
+              <p class="artikel-text">Pencapaian baru komunitas kami — ribuan investor aktif yang saling berbagi strategi dan insight.</p>
+              <a href="#" class="btn-read">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="artikel-card">
+            <img src="fee.jpeg" class="artikel-img" alt="Partnership">
+            <div class="artikel-body">
+              <div class="artikel-meta">
+                <span class="artikel-tag">Bisnis</span>
+                <span class="artikel-date"><i class="bi bi-calendar3 me-1"></i>5 Feb 2025</span>
+              </div>
+              <h5 class="artikel-title">RubyAI Resmi Bermitra dengan 3 Platform Exchange Besar</h5>
+              <p class="artikel-text">Langkah strategis RubyAI memperluas jangkauan ekosistem ke platform-platform exchange internasional.</p>
+              <a href="#" class="btn-read">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Paginasi -->
+      <div class="d-flex justify-content-center mt-5">
+        <nav aria-label="Navigasi halaman artikel">
+          <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== STATISTIK EKOSISTEM ==================== -->
+  <section class="sec-pad service-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="sec-tag on-dark">Data Live</span>
+        <h2 class="sec-title text-white">Ekosistem dalam Angka</h2>
+        <p class="sec-sub text-white-70">Transparansi penuh adalah komitmen utama kami</p>
+      </div>
+      <div class="row g-4 justify-content-center text-center">
+        <div class="col-6 col-sm-3">
+          <div class="service-item">
+            <div class="stat-val mb-1">50K+</div>
+            <div class="stat-lbl">Pengguna Aktif</div>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3">
+          <div class="service-item">
+            <div class="stat-val mb-1">$2.4M</div>
+            <div class="stat-lbl">Volume Transaksi</div>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3">
+          <div class="service-item">
+            <div class="stat-val mb-1">99.9%</div>
+            <div class="stat-lbl">Uptime Jaringan</div>
+          </div>
+        </div>
+        <div class="col-6 col-sm-3">
+          <div class="service-item">
+            <div class="stat-val mb-1">35%</div>
+            <div class="stat-lbl">APY Tertinggi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="sec-pad">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="text-center mb-5">
+            <span class="sec-tag">Bantuan</span>
+            <h2 class="sec-title">Pertanyaan yang Sering Ditanyakan</h2>
+            <p class="sec-sub">Temukan jawaban cepat untuk pertanyaan umum seputar RubyAI</p>
+          </div>
+          <div class="accordion faq-ruby" id="faqEkosistem">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  Apa itu Token RubyAI dan bagaimana cara kerjanya?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqEkosistem">
+                <div class="accordion-body">
+                  Token RubyAI adalah aset kripto berbasis blockchain yang dirancang untuk memfasilitasi transaksi digital yang aman, cepat, dan murah. Token ini beroperasi di jaringan terdesentralisasi sehingga tidak ada satu pihak pun yang bisa memanipulasi catatan transaksi.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Berapa biaya transaksi (gas fee) di jaringan RubyAI?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqEkosistem">
+                <div class="accordion-body">
+                  Gas fee di RubyAI termasuk yang terendah di pasar, dimulai dari kurang dari $0.01 per transaksi. Biaya ini digunakan untuk memvalidasi transaksi di jaringan dan dibagikan kepada para validator.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Bagaimana cara mengaktifkan fitur staking?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqEkosistem">
+                <div class="accordion-body">
+                  Untuk mengaktifkan staking, buka wallet RubyAI kamu, pilih menu "Staking", tentukan jumlah token yang ingin di-stake, lalu konfirmasi. APY akan mulai berjalan dalam 24 jam setelah aktivasi.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  Apakah token RubyAI tersedia di exchange publik?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqEkosistem">
+                <div class="accordion-body">
+                  Saat ini token RubyAI tersedia melalui platform kami dan 3 exchange mitra. Kami sedang dalam proses listing di exchange internasional besar dan akan diumumkan melalui halaman ini.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  Bagaimana RubyAI memastikan keamanan aset pengguna?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqEkosistem">
+                <div class="accordion-body">
+                  RubyAI menggunakan enkripsi end-to-end, autentikasi dua faktor (2FA), dan audit keamanan rutin oleh pihak ketiga. Selain itu, sebagian besar aset pengguna disimpan di cold wallet yang terisolasi dari internet.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SUBSCRIBE ==================== -->
+  <section class="subscribe-section">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Temui Kami Di</h5>
+          <p class="text-muted small mb-3">Ikuti kami di media sosial untuk update terbaru</p>
+          <div class="d-flex gap-3">
+            <a href="https://facebook.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com/" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Subscribe</h5>
+          <p class="text-muted small mb-3">Informasi terbaru langsung ke inbox kamu</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Masukkan email kamu" aria-label="Email subscribe">
+            <button class="btn btn-ruby px-4" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 text-center text-md-start">
+        <div class="col-md-4">
+          <h5 class="fw-bold text-white mb-2">RubyAI</h5>
+          <p class="text-secondary small">Solusi Keamanan Uang Digital untuk semua kalangan.<br>Aman, transparan, dan terpercaya.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Navigasi</h6>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="produk.html" class="footer-link">Token Produk</a></li>
+            <li><a href="promo.html" class="footer-link">Promo</a></li>
+            <li><a href="informasi.html" class="footer-link">Informasi</a></li>
+            <li><a href="langganan.html" class="footer-link">Langganan</a></li>
+            <li><a href="index.html#launching" class="footer-link">Grand Launching</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Kontak</h6>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-ruby"></i>Jl. Pekan Baru No. 7, Mojokerto</li>
+            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-ruby"></i>+62 888-307-9611</li>
+            <li><i class="bi bi-envelope-fill me-2 text-ruby"></i>info@rubyai.id</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <p class="text-center text-secondary small mb-0">&copy; 2025 RubyAI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

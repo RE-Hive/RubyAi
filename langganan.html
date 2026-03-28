@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Langganan RubyAI — Pilih paket wallet dan layanan digital yang sesuai kebutuhanmu.">
+  <title>Langganan — RubyAI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar navbar-expand-lg ruby-navbar" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ruby<span class="brand-ai">AI</span></a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto ms-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="produk.html">Token Produk</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://docs.google.com/document/d/1hWPXfQ_zTvxP4cNS-nwSKMGz1EPxm1WU/edit?usp=drive_link&ouid=108765192675620260464&rtpof=true&sd=true" target="_blank" rel="noopener">
+              White Paper
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html">Informasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="langganan.html">Langganan</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
+          <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== BANNER LANGGANAN ==================== -->
+  <section class="lang-banner">
+    <div class="container text-center">
+      <span class="sec-tag on-dark mb-3 d-inline-block">Pilih Paket Terbaik</span>
+      <h1 class="banner-title text-white">Paket Langganan RubyAI</h1>
+      <p class="text-white-70 mt-2 mb-0">Mulai gratis, upgrade kapan saja sesuai kebutuhanmu</p>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING SECTION ==================== -->
+  <section class="sec-pad">
+    <div class="container">
+
+      <div class="plan-toggle-wrap">
+        <div class="plan-toggle">
+          <button class="plan-toggle-btn aktif" id="btnBulanan" onclick="setToggle('bulanan')">Bulanan</button>
+          <button class="plan-toggle-btn" id="btnTahunan" onclick="setToggle('tahunan')">
+            Tahunan <span class="plan-toggle-save">Hemat 20%</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+
+        <!-- STARTER -->
+        <div class="col-md-4">
+          <div class="plan-card">
+            <div class="plan-head">
+              <p class="plan-name">Starter</p>
+              <div class="plan-price">
+                <span class="price-cur">$</span><span class="price-val" id="starter-price">0</span>
+              </div>
+              <span class="price-per" id="starter-per">Selamanya gratis</span>
+              <p class="plan-desc">Untuk pemula yang ingin mengenal ekosistem RubyAI</p>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-feat">
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Wallet dasar RubyAI</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>100 transaksi / bulan</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Histori transaksi 30 hari</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Konversi token dasar</li>
+                <li class="feat-off"><i class="bi bi-x-circle-fill feat-icon"></i>Staking aktif</li>
+                <li class="feat-off"><i class="bi bi-x-circle-fill feat-icon"></i>Dukungan prioritas</li>
+                <li class="feat-off"><i class="bi bi-x-circle-fill feat-icon"></i>Multi-wallet</li>
+              </ul>
+              <a href="index.html#launching" class="btn btn-outline-ruby w-100 mt-auto">Mulai Gratis</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRO (POPULER) -->
+        <div class="col-md-4">
+          <div class="plan-card popular">
+            <div class="plan-badge">Paling Populer</div>
+            <div class="plan-head">
+              <p class="plan-name">Pro</p>
+              <div class="plan-price">
+                <span class="price-cur">$</span><span class="price-val" id="pro-price">9.99</span>
+              </div>
+              <span class="price-per" id="pro-per">per bulan</span>
+              <p class="plan-desc">Untuk investor aktif yang butuh fitur lengkap</p>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-feat">
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Semua fitur Starter</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Transaksi tak terbatas</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Histori transaksi penuh</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Staking dengan APY bonus 5%</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Dukungan prioritas 24/7</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Multi-wallet (hingga 3)</li>
+                <li class="feat-off"><i class="bi bi-x-circle-fill feat-icon"></i>Dashboard tim kolaboratif</li>
+              </ul>
+              <a href="index.html#launching" class="btn btn-ruby w-100 mt-auto">Pilih Pro</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="col-md-4">
+          <div class="plan-card">
+            <div class="plan-head">
+              <p class="plan-name">Enterprise</p>
+              <div class="plan-price">
+                <span class="price-cur">$</span><span class="price-val" id="ent-price">24.99</span>
+              </div>
+              <span class="price-per" id="ent-per">per bulan</span>
+              <p class="plan-desc">Untuk institusi dan investor profesional skala besar</p>
+            </div>
+            <div class="plan-body">
+              <ul class="plan-feat">
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Semua fitur Pro</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Multi-wallet (hingga 10)</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Staking APY tertinggi + bonus</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Dashboard tim kolaboratif</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Laporan portofolio otomatis</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>Manajer akun personal</li>
+                <li><i class="bi bi-check-circle-fill feat-icon"></i>API akses penuh</li>
+              </ul>
+              <a href="index.html#launching" class="btn btn-outline-ruby w-100 mt-auto">Hubungi Kami</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Catatan kecil di bawah harga -->
+      <p class="text-center text-muted small mt-4">
+        <i class="bi bi-shield-check me-1 text-ruby"></i>
+        Semua paket dilindungi enkripsi end-to-end. Batalkan langganan kapan saja.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== PERBANDINGAN FITUR ==================== -->
+  <section class="sec-pad" style="background: var(--bg-light);">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="sec-tag">Perbandingan</span>
+        <h2 class="sec-title">Kenapa Pilih RubyAI?</h2>
+        <p class="sec-sub">Fitur yang tidak akan kamu temukan di tempat lain</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="text-center p-4 bg-white rounded-3 h-100" style="border: 1px solid var(--border-light); box-shadow: var(--card-shadow);">
+            <div class="mb-3">
+              <i class="bi bi-shield-lock-fill" style="font-size:2.2rem; color: var(--ruby-red);"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Keamanan Tinggi</h5>
+            <p class="text-muted small mb-0">Enkripsi end-to-end + 2FA wajib untuk semua transaksi di atas ambang tertentu.</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="text-center p-4 bg-white rounded-3 h-100" style="border: 1px solid var(--border-light); box-shadow: var(--card-shadow);">
+            <div class="mb-3">
+              <i class="bi bi-lightning-charge-fill" style="font-size:2.2rem; color: var(--ruby-red);"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Transaksi Instan</h5>
+            <p class="text-muted small mb-0">Konfirmasi transaksi dalam hitungan detik — jaringan RubyAI dirancang untuk kecepatan.</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="text-center p-4 bg-white rounded-3 h-100" style="border: 1px solid var(--border-light); box-shadow: var(--card-shadow);">
+            <div class="mb-3">
+              <i class="bi bi-graph-up-arrow" style="font-size:2.2rem; color: var(--ruby-red);"></i>
+            </div>
+            <h5 class="fw-bold mb-2">APY Kompetitif</h5>
+            <p class="text-muted small mb-0">Hasilkan passive income hingga 35% APY dari staking token di ekosistem kami.</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="text-center p-4 bg-white rounded-3 h-100" style="border: 1px solid var(--border-light); box-shadow: var(--card-shadow);">
+            <div class="mb-3">
+              <i class="bi bi-headset" style="font-size:2.2rem; color: var(--ruby-red);"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Support 24/7</h5>
+            <p class="text-muted small mb-0">Tim dukungan kami siap membantu kapan pun melalui live chat, email, atau telepon.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ LANGGANAN ==================== -->
+  <section class="sec-pad">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="text-center mb-5">
+            <span class="sec-tag">FAQ</span>
+            <h2 class="sec-title">Pertanyaan Seputar Langganan</h2>
+            <p class="sec-sub">Semua yang perlu kamu tahu sebelum berlangganan</p>
+          </div>
+          <div class="accordion lang-faq" id="faqLangganan">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#lq1">
+                  Bisakah saya upgrade atau downgrade paket kapan saja?
+                </button>
+              </h2>
+              <div id="lq1" class="accordion-collapse collapse show" data-bs-parent="#faqLangganan">
+                <div class="accordion-body">
+                  Ya, kamu bisa upgrade atau downgrade paket kapan saja. Jika upgrade, perbedaan biaya akan dihitung secara proporsional. Jika downgrade, perubahan berlaku di siklus tagihan berikutnya.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lq2">
+                  Apakah ada masa uji coba gratis untuk paket berbayar?
+                </button>
+              </h2>
+              <div id="lq2" class="accordion-collapse collapse" data-bs-parent="#faqLangganan">
+                <div class="accordion-body">
+                  Paket Starter tersedia gratis selamanya. Untuk paket Pro dan Enterprise, kami menyediakan uji coba 14 hari tanpa biaya dan tanpa perlu memasukkan data kartu kredit.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lq3">
+                  Metode pembayaran apa saja yang diterima?
+                </button>
+              </h2>
+              <div id="lq3" class="accordion-collapse collapse" data-bs-parent="#faqLangganan">
+                <div class="accordion-body">
+                  Kami menerima pembayaran melalui transfer bank, kartu kredit/debit, dompet digital (GoPay, OVO, DANA), dan tentu saja token RubyAI itu sendiri dengan diskon 5%.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lq4">
+                  Apakah data saya aman jika saya membatalkan langganan?
+                </button>
+              </h2>
+              <div id="lq4" class="accordion-collapse collapse" data-bs-parent="#faqLangganan">
+                <div class="accordion-body">
+                  Seluruh data dan aset token kamu tetap aman dan dapat diakses meskipun kamu membatalkan langganan berbayar. Akun akan otomatis turun ke paket Starter dan semua data histori transaksi tetap tersimpan selama 30 hari.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lq5">
+                  Berapa diskon yang didapat jika memilih paket tahunan?
+                </button>
+              </h2>
+              <div id="lq5" class="accordion-collapse collapse" data-bs-parent="#faqLangganan">
+                <div class="accordion-body">
+                  Paket tahunan memberikan diskon 20% dibandingkan pembayaran bulanan. Artinya kamu hemat setara 2,4 bulan berlangganan dalam setahun. Diskon diterapkan otomatis saat kamu memilih opsi "Tahunan" di halaman ini.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA LANGGANAN ==================== -->
+  <section class="sec-pad lang-cta">
+    <div class="container position-relative z-1 text-center">
+      <span class="sec-tag on-dark mb-3 d-inline-block">Mulai Sekarang</span>
+      <h2 class="sec-title text-white mb-3">Siap Bergabung dengan Ekosistem RubyAI?</h2>
+      <p class="text-white-70 mb-4 mx-auto" style="max-width:520px;">
+        Daftar gratis hari ini dan rasakan perbedaan platform token yang sesungguhnya — aman, cepat, dan transparan.
+      </p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="index.html#launching" class="btn btn-ruby btn-lg px-5">Daftar Sekarang</a>
+        <a href="produk.html" class="btn btn-ghost-white btn-lg px-5">Lihat Token</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SUBSCRIBE ==================== -->
+  <section class="subscribe-section">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Temui Kami Di</h5>
+          <p class="text-muted small mb-3">Ikuti kami di media sosial untuk update terbaru</p>
+          <div class="d-flex gap-3">
+            <a href="https://facebook.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com/" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Subscribe</h5>
+          <p class="text-muted small mb-3">Informasi terbaru langsung ke inbox kamu</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Masukkan email kamu" aria-label="Email subscribe">
+            <button class="btn btn-ruby px-4" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 text-center text-md-start">
+        <div class="col-md-4">
+          <h5 class="fw-bold text-white mb-2">RubyAI</h5>
+          <p class="text-secondary small">Solusi Keamanan Uang Digital untuk semua kalangan.<br>Aman, transparan, dan terpercaya.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Navigasi</h6>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="produk.html" class="footer-link">Token Produk</a></li>
+            <li><a href="promo.html" class="footer-link">Promo</a></li>
+            <li><a href="informasi.html" class="footer-link">Informasi</a></li>
+            <li><a href="langganan.html" class="footer-link">Langganan</a></li>
+            <li><a href="index.html#launching" class="footer-link">Grand Launching</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Kontak</h6>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-ruby"></i>Jl. Pekan Baru No. 7, Mojokerto</li>
+            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-ruby"></i>+62 888-307-9611</li>
+            <li><i class="bi bi-envelope-fill me-2 text-ruby"></i>info@rubyai.id</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <p class="text-center text-secondary small mb-0">&copy; 2025 RubyAI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    const harga = {
+      bulanan:  { starter: '0',  starterPer: 'Selamanya gratis', pro: '9.99',  proPer: 'per bulan', ent: '24.99', entPer: 'per bulan' },
+      tahunan:  { starter: '0',  starterPer: 'Selamanya gratis', pro: '7.99',  proPer: 'per bulan (billed annually)', ent: '19.99', entPer: 'per bulan (billed annually)' }
+    };
+
+    function setToggle(mode) {
+      const d = harga[mode];
+      document.getElementById('starter-price').textContent = d.starter;
+      document.getElementById('starter-per').textContent   = d.starterPer;
+      document.getElementById('pro-price').textContent     = d.pro;
+      document.getElementById('pro-per').textContent       = d.proPer;
+      document.getElementById('ent-price').textContent     = d.ent;
+      document.getElementById('ent-per').textContent       = d.entPer;
+
+      document.getElementById('btnBulanan').classList.toggle('aktif', mode === 'bulanan');
+      document.getElementById('btnTahunan').classList.toggle('aktif', mode === 'tahunan');
+    }
+  </script>
+</body>
+</html>
