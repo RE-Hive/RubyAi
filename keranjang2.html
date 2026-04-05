@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Keranjang Belanja RubyAI — Review item promo sebelum checkout.">
+  <title>Keranjang — RubyAI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .cart-banner {
+      min-height: 36vh;
+      display: flex; align-items: center;
+      background: linear-gradient(rgba(10,0,0,0.78), rgba(100,14,2,0.92)), url('bannerr.png');
+      background-size: cover; background-position: center;
+      position: relative;
+    }
+
+    .cart-nav-btn { position: relative; display: inline-flex; align-items: center; }
+    .cart-count-badge {
+      position: absolute; top: -6px; right: -8px;
+      background: #ffc107; color: #000;
+      font-size: 0.58rem; font-weight: 800;
+      width: 17px; height: 17px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+    }
+    .cart-count-badge.visible { display: flex; }
+
+    .cart-item {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-card);
+      box-shadow: var(--card-shadow);
+      padding: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: var(--transition);
+    }
+    .cart-item:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.09); }
+    .cart-item-img {
+      width: 80px; height: 80px;
+      border-radius: 10px; object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border-light);
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.975rem; font-weight: 700;
+      color: var(--text-dark); margin-bottom: 4px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .cart-item-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      padding: 2px 9px; border-radius: 100px;
+      background: var(--ruby-light); color: var(--ruby-red);
+      margin-bottom: 8px;
+    }
+    .cart-item-price-final {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 800; color: var(--ruby-red);
+    }
+    .cart-item-price-normal {
+      font-size: 0.78rem; color: var(--text-muted);
+      text-decoration: line-through; margin-left: 6px;
+    }
+    .cart-item-subtotal {
+      font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;
+    }
+
+    .qty-control {
+      display: flex; align-items: center; gap: 0;
+      border: 1.5px solid var(--border-light);
+      border-radius: 8px; overflow: hidden;
+      width: fit-content; margin-top: 10px;
+    }
+    .qty-btn {
+      background: var(--bg-light); border: none;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-dark); font-size: 1rem;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .qty-btn:hover { background: var(--ruby-light); color: var(--ruby-red); }
+    .qty-val {
+      width: 36px; height: 32px; text-align: center;
+      font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700;
+      border: none; border-left: 1.5px solid var(--border-light);
+      border-right: 1.5px solid var(--border-light);
+      background: #fff; color: var(--text-dark);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .btn-hapus {
+      background: none; border: none;
+      color: #ef4444; font-size: 0.8rem; font-weight: 600;
+      padding: 0; cursor: pointer; transition: var(--transition);
+      display: flex; align-items: center; gap: 4px;
+      margin-top: 8px;
+    }
+    .btn-hapus:hover { color: #b91c1c; }
+
+    .order-summary {
+      background: #fff;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-card);
+      box-shadow: var(--card-shadow);
+      padding: 28px;
+      position: sticky;
+      top: calc(var(--navbar-h) + 24px);
+    }
+    .order-summary-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--text-dark); margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .summary-row {
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 12px;
+      font-size: 0.875rem;
+    }
+    .summary-row .label { color: var(--text-muted); }
+    .summary-row .value { font-weight: 600; color: var(--text-dark); }
+    .summary-row.total {
+      padding-top: 14px;
+      border-top: 1.5px solid var(--border-light);
+      margin-top: 4px;
+    }
+    .summary-row.total .label { font-weight: 700; color: var(--text-dark); font-size: 0.95rem; }
+    .summary-row.total .value {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem; font-weight: 800; color: var(--ruby-red);
+    }
+    .summary-savings {
+      background: #d1fae5; border-radius: 8px;
+      padding: 10px 14px; font-size: 0.82rem;
+      color: #065f46; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .empty-cart {
+      text-align: center; padding: 64px 24px;
+    }
+    .empty-cart-icon {
+      font-size: 4rem; color: var(--border-light);
+      display: block; margin-bottom: 20px;
+    }
+    .empty-cart h4 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      color: var(--text-dark); margin-bottom: 8px;
+    }
+    .empty-cart p { color: var(--text-muted); font-size: 0.9rem; }
+
+    #rubyToast {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      background: #111827; color: #fff; padding: 13px 20px;
+      border-radius: 12px; font-size: 0.875rem; font-weight: 500;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+      transform: translateY(80px); opacity: 0;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      display: flex; align-items: center; gap: 10px;
+      max-width: 300px; pointer-events: none;
+    }
+    #rubyToast.show { transform: translateY(0); opacity: 1; }
+    #rubyToast i { color: #4ade80; }
+
+    @media (max-width: 767.98px) {
+      .order-summary { position: static; margin-top: 24px; }
+      .cart-item-img { width: 64px; height: 64px; }
+      .cart-item-name { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar navbar-expand-lg ruby-navbar" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Ruby<span class="brand-ai">AI</span></a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto ms-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="produk.html">Token Produk</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://docs.google.com/document/d/1hWPXfQ_zTvxP4cNS-nwSKMGz1EPxm1WU/edit?usp=drive_link&ouid=108765192675620260464&rtpof=true&sd=true" target="_blank" rel="noopener">
+              White Paper
+            </a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html">Informasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="promo.html">Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="langganan.html">Langganan</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
+            <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
+          </form>
+          <a href="keranjang.html" class="btn btn-light btn-sm cart-nav-btn" aria-label="Keranjang" title="Keranjang">
+            <i class="bi bi-cart3-fill" style="color:var(--ruby-red);"></i>
+            <span class="cart-count-badge" id="cartBadge">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== BANNER ==================== -->
+  <section class="cart-banner">
+    <div class="container text-center">
+      <span class="sec-tag on-dark mb-3 d-inline-block">Belanja Promo</span>
+      <h1 class="banner-title text-white">Keranjang Belanja</h1>
+      <p class="text-white-70 mt-2 mb-0">Review promo pilihanmu sebelum melanjutkan ke checkout</p>
+    </div>
+  </section>
+
+  <!-- ==================== KERANJANG CONTENT ==================== -->
+  <section class="sec-pad">
+    <div class="container">
+      <div class="row g-4" id="cartContent">
+
+        <div class="col-lg-8" id="cartItemsCol">
+        </div>
+
+        <div class="col-lg-4" id="cartSummaryCol">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== REKOMENDASI PROMO ==================== -->
+  <section class="sec-pad" style="background:var(--bg-light);">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="sec-tag">Belum Selesai?</span>
+        <h2 class="sec-title">Lanjut Belanja Promo</h2>
+        <p class="sec-sub">Masih banyak penawaran eksklusif yang menunggu</p>
+      </div>
+      <div class="text-center d-flex flex-wrap gap-3 justify-content-center">
+        <a href="promo.html" class="btn btn-ruby btn-lg px-5">
+          <i class="bi bi-tag-fill me-2"></i> Lihat Semua Promo
+        </a>
+        <a href="produk.html" class="btn btn-outline-ruby btn-lg px-5">
+          <i class="bi bi-grid me-2"></i> Token Produk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SUBSCRIBE ==================== -->
+  <section class="subscribe-section">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Temui Kami Di</h5>
+          <p class="text-muted small mb-3">Ikuti kami di media sosial untuk update terbaru</p>
+          <div class="d-flex gap-3">
+            <a href="https://facebook.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com/" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Notifikasi Promo</h5>
+          <p class="text-muted small mb-3">Dapat notifikasi promo terbaru sebelum kehabisan</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Masukkan email kamu" aria-label="Email promo">
+            <button class="btn btn-ruby px-4" type="button">Daftar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 text-center text-md-start">
+        <div class="col-md-4">
+          <h5 class="fw-bold text-white mb-2">RubyAI</h5>
+          <p class="text-secondary small">Solusi Keamanan Uang Digital untuk semua kalangan.<br>Aman, transparan, dan terpercaya.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Navigasi</h6>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="produk.html" class="footer-link">Token Produk</a></li>
+            <li><a href="promo.html" class="footer-link">Promo</a></li>
+            <li><a href="informasi.html" class="footer-link">Informasi</a></li>
+            <li><a href="langganan.html" class="footer-link">Langganan</a></li>
+            <li><a href="keranjang.html" class="footer-link">Keranjang</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Kontak</h6>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-ruby"></i>Jl. Pekan Baru No. 7, Mojokerto</li>
+            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-ruby"></i>+62 888-307-9611</li>
+            <li><i class="bi bi-envelope-fill me-2 text-ruby"></i>info@rubyai.id</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <p class="text-center text-secondary small mb-0">&copy; 2025 RubyAI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div id="rubyToast">
+    <i class="bi bi-info-circle-fill"></i>
+    <span id="rubyToastMsg">Keranjang diperbarui</span>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function getKeranjang() {
+      return JSON.parse(localStorage.getItem('rubyai_keranjang') || '[]');
+    }
+
+    function simpanKeranjang(keranjang) {
+      localStorage.setItem('rubyai_keranjang', JSON.stringify(keranjang));
+    }
+
+    function updateCartBadge() {
+      var keranjang = getKeranjang();
+      var total = keranjang.reduce(function(s, i) { return s + i.qty; }, 0);
+      var badge = document.getElementById('cartBadge');
+      if (!badge) return;
+      badge.textContent = total > 99 ? '99+' : total;
+      total > 0 ? badge.classList.add('visible') : badge.classList.remove('visible');
+    }
+
+    function formatUSD(val) {
+      if (val === 0) return 'GRATIS';
+      return '$' + val.toFixed(2);
+    }
+
+    function renderCart() {
+      var keranjang = getKeranjang();
+      var itemsCol   = document.getElementById('cartItemsCol');
+      var summaryCol = document.getElementById('cartSummaryCol');
+
+      /* ---- EMPTY STATE ---- */
+      if (keranjang.length === 0) {
+        itemsCol.innerHTML =
+          '<div class="empty-cart">' +
+            '<i class="bi bi-cart-x empty-cart-icon"></i>' +
+            '<h4>Keranjang Masih Kosong</h4>' +
+            '<p class="mb-4">Kamu belum menambahkan item promo apapun. Yuk cari promo terbaik!</p>' +
+            '<a href="promo.html" class="btn btn-ruby px-5"><i class="bi bi-tag-fill me-2"></i>Lihat Promo Sekarang</a>' +
+          '</div>';
+        summaryCol.innerHTML = '';
+        updateCartBadge();
+        return;
+      }
+
+      var subtotal   = 0;
+      var totalHemat = 0;
+      keranjang.forEach(function(item) {
+        subtotal   += item.harga * item.qty;
+        totalHemat += (item.hargaNormal - item.harga) * item.qty;
+      });
+
+      var itemsHTML = '<div class="d-flex justify-content-between align-items-center mb-4">' +
+        '<h5 class="fw-bold mb-0" style="font-family:\'Syne\',sans-serif;">' +
+          '<i class="bi bi-cart3 me-2 text-ruby"></i>Item Dipilih' +
+        '</h5>' +
+        '<span class="badge rounded-pill" style="background:var(--ruby-light);color:var(--ruby-red);font-size:0.8rem;">' +
+          keranjang.length + ' item</span>' +
+      '</div>' +
+      '<div class="d-flex flex-column gap-3">';
+
+      keranjang.forEach(function(item, idx) {
+        var imgSrc = item.gambar || 'bannerr.png';
+        var hargaStr = item.harga === 0 ? '<span style="color:#16a34a;font-weight:800;">GRATIS</span>' :
+          '<span class="cart-item-price-final">$' + item.harga.toFixed(2) + '</span>';
+        var normalStr = item.hargaNormal !== item.harga ?
+          '<span class="cart-item-price-normal">$' + item.hargaNormal.toFixed(2) + '</span>' : '';
+        var subtotalItem = item.harga * item.qty;
+        var subtotalStr = item.harga === 0 ? '' :
+          '<span class="cart-item-subtotal">Subtotal: $' + subtotalItem.toFixed(2) + '</span>';
+
+        itemsHTML +=
+          '<div class="cart-item" id="item-' + idx + '">' +
+            '<img src="' + imgSrc + '" class="cart-item-img" alt="' + item.nama + '" ' +
+              'onerror="this.src=\'bannerr.png\'">' +
+            '<div class="cart-item-info">' +
+              '<div class="cart-item-name">' + item.nama + '</div>' +
+              '<span class="cart-item-badge">' + (item.badge || 'Promo') + '</span>' +
+              '<div style="display:flex;align-items:baseline;gap:4px;">' +
+                hargaStr + normalStr +
+              '</div>' +
+              subtotalStr +
+              '<div class="qty-control">' +
+                '<button class="qty-btn" onclick="ubahQty(' + idx + ', -1)" aria-label="Kurangi">&#8722;</button>' +
+                '<span class="qty-val">' + item.qty + '</span>' +
+                '<button class="qty-btn" onclick="ubahQty(' + idx + ', 1)" aria-label="Tambah">&#43;</button>' +
+              '</div>' +
+              '<button class="btn-hapus" onclick="hapusItem(' + idx + ')">' +
+                '<i class="bi bi-trash3"></i> Hapus' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+      });
+
+      itemsHTML += '</div>';
+      itemsHTML += '<div class="mt-4 d-flex justify-content-between align-items-center flex-wrap gap-2">' +
+        '<button class="btn btn-sm text-danger border-0 p-0 d-flex align-items-center gap-1" onclick="kosongkanKeranjang()">' +
+          '<i class="bi bi-trash3-fill"></i> Kosongkan Semua' +
+        '</button>' +
+        '<a href="promo.html" class="btn btn-outline-ruby btn-sm">' +
+          '<i class="bi bi-arrow-left me-1"></i> Tambah Promo Lain' +
+        '</a>' +
+      '</div>';
+
+      itemsCol.innerHTML = itemsHTML;
+
+      var hematHTML = totalHemat > 0 ?
+        '<div class="summary-savings">' +
+          '<i class="bi bi-piggy-bank-fill"></i>' +
+          'Kamu hemat $' + totalHemat.toFixed(2) + ' dari promo ini!' +
+        '</div>' : '';
+
+      summaryCol.innerHTML =
+        '<div class="order-summary">' +
+          '<div class="order-summary-title">&#128203; Ringkasan Pesanan</div>' +
+
+          hematHTML +
+
+          '<div class="summary-row">' +
+            '<span class="label">Subtotal (' + keranjang.length + ' item)</span>' +
+            '<span class="value">' + (subtotal === 0 ? 'GRATIS' : '$' + subtotal.toFixed(2)) + '</span>' +
+          '</div>' +
+          '<div class="summary-row">' +
+            '<span class="label">Diskon & Bonus</span>' +
+            '<span class="value" style="color:#16a34a;">-$' + totalHemat.toFixed(2) + '</span>' +
+          '</div>' +
+          '<div class="summary-row">' +
+            '<span class="label">Biaya Platform</span>' +
+            '<span class="value" style="color:#16a34a;">GRATIS</span>' +
+          '</div>' +
+          '<div class="summary-row total">' +
+            '<span class="label">Total Bayar</span>' +
+            '<span class="value">' + (subtotal === 0 ? 'GRATIS' : '$' + subtotal.toFixed(2)) + '</span>' +
+          '</div>' +
+
+          '<button class="btn btn-ruby w-100 mt-4 py-3 fw-bold" style="font-size:1rem;" onclick="checkout()">' +
+            '<i class="bi bi-shield-check me-2"></i>Lanjut Checkout' +
+          '</button>' +
+          '<p class="text-muted text-center mt-3 mb-0" style="font-size:0.78rem;">' +
+            '<i class="bi bi-lock-fill me-1"></i>Transaksi aman &amp; terenkripsi' +
+          '</p>' +
+
+          '<hr class="my-4">' +
+          '<div style="font-size:0.78rem;color:var(--text-muted);">' +
+            '<div class="d-flex align-items-center gap-2 mb-2">' +
+              '<i class="bi bi-patch-check-fill text-ruby"></i>' +
+              'Promo berlaku satu kali per akun' +
+            '</div>' +
+            '<div class="d-flex align-items-center gap-2 mb-2">' +
+              '<i class="bi bi-clock-fill text-ruby"></i>' +
+              'Klaim dalam 24 jam setelah checkout' +
+            '</div>' +
+            '<div class="d-flex align-items-center gap-2">' +
+              '<i class="bi bi-headset text-ruby"></i>' +
+              'Support 24/7 via info@rubyai.id' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+      updateCartBadge();
+    }
+
+    function ubahQty(idx, delta) {
+      var keranjang = getKeranjang();
+      if (!keranjang[idx]) return;
+      keranjang[idx].qty += delta;
+      if (keranjang[idx].qty <= 0) {
+        hapusItem(idx);
+        return;
+      }
+      simpanKeranjang(keranjang);
+      renderCart();
+    }
+
+    function hapusItem(idx) {
+      var keranjang = getKeranjang();
+      var nama = keranjang[idx] ? keranjang[idx].nama : 'Item';
+      keranjang.splice(idx, 1);
+      simpanKeranjang(keranjang);
+      renderCart();
+      showToast(nama + ' dihapus dari keranjang');
+    }
+
+    function kosongkanKeranjang() {
+      if (!confirm('Kosongkan semua item di keranjang?')) return;
+      localStorage.removeItem('rubyai_keranjang');
+      renderCart();
+      showToast('Keranjang dikosongkan');
+    }
+
+    function checkout() {
+      var keranjang = getKeranjang();
+      if (keranjang.length === 0) {
+        showToast('Keranjang masih kosong!');
+        return;
+      }
+
+      window.location.href = 'langganan.html';
+    }
+
+    var _toastTimer;
+    function showToast(msg) {
+      var toast = document.getElementById('rubyToast');
+      var msgEl = document.getElementById('rubyToastMsg');
+      if (!toast) return;
+      msgEl.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(_toastTimer);
+      _toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 2800);
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

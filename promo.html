@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Promo & Penawaran Eksklusif RubyAI — Dapatkan diskon token, bonus staking, dan kode promo spesial.">
+  <meta name="description" content="Promo & Penawaran Eksklusif RubyAI — Dapatkan diskon token, bonus staking, dan penawaran spesial.">
   <title>Promo — RubyAI</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,116 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .filter-btn {
+      transition: all 0.22s ease;
+      border-radius: var(--radius-btn) !important;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .filter-btn:active { transform: scale(0.94); }
+    .filter-btn.active {
+      background-color: #ffc107 !important;
+      color: #000 !important;
+      border-color: #ffc107 !important;
+      box-shadow: 0 4px 16px rgba(255,193,7,0.45);
+    }
+
+    .hovered-card {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-card);
+      background: #fff;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      transition: var(--transition);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .hovered-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--card-hover);
+      border-color: transparent;
+    }
+    .hovered-card .card-img-top {
+      width: 100%; height: 185px; object-fit: cover; display: block;
+    }
+    .hovered-card .card-body {
+      padding: 18px; display: flex; flex-direction: column; flex: 1;
+    }
+    .hovered-card .card-title {
+      font-size: 0.975rem; font-weight: 700; color: var(--text-dark);
+      margin-bottom: 6px; font-family: 'Syne', sans-serif;
+    }
+    .hovered-card .card-text {
+      font-size: 0.835rem; color: var(--text-muted);
+      line-height: 1.55; flex: 1; margin-bottom: 14px;
+    }
+
+    .promo-section .hovered-card {
+      opacity: 0;
+      animation: cardMuncul 0.5s ease forwards;
+    }
+    .promo-section > .row > div:nth-child(1) .hovered-card { animation-delay: 0.05s; }
+    .promo-section > .row > div:nth-child(2) .hovered-card { animation-delay: 0.10s; }
+    .promo-section > .row > div:nth-child(3) .hovered-card { animation-delay: 0.15s; }
+    .promo-section > .row > div:nth-child(4) .hovered-card { animation-delay: 0.20s; }
+    .promo-section > .row > div:nth-child(5) .hovered-card { animation-delay: 0.25s; }
+    .promo-section > .row > div:nth-child(6) .hovered-card { animation-delay: 0.30s; }
+    .promo-section > .row > div:nth-child(7) .hovered-card { animation-delay: 0.35s; }
+    .promo-section > .row > div:nth-child(8) .hovered-card { animation-delay: 0.40s; }
+
+    @keyframes cardMuncul {
+      from { opacity: 0; transform: translateY(26px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .promo-price-area {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 12px;
+    }
+    .promo-price-normal {
+      font-size: 0.78rem; color: var(--text-muted); text-decoration: line-through;
+    }
+    .promo-price-final {
+      font-family: 'Syne', sans-serif; font-size: 1.2rem;
+      font-weight: 800; color: var(--ruby-red);
+    }
+    .promo-badge-card {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 100px; margin-bottom: 8px;
+    }
+    .badge-diskon { background:#fee2e2; color:var(--ruby-red); }
+    .badge-bonus  { background:#d1fae5; color:#065f46; }
+    .badge-hot    { background:var(--ruby-red); color:#fff; }
+
+
+    .cart-nav-btn { position: relative; display: inline-flex; align-items: center; }
+    .cart-count-badge {
+      position: absolute; top: -6px; right: -8px;
+      background: #ffc107; color: #000;
+      font-size: 0.58rem; font-weight: 800;
+      width: 17px; height: 17px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+    }
+    .cart-count-badge.visible { display: flex; }
+
+    #rubyToast {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      background: #111827; color: #fff; padding: 13px 20px;
+      border-radius: 12px; font-size: 0.875rem; font-weight: 500;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+      transform: translateY(80px); opacity: 0;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      display: flex; align-items: center; gap: 10px;
+      max-width: 300px; pointer-events: none;
+    }
+    #rubyToast.show { transform: translateY(0); opacity: 1; }
+    #rubyToast i { color: #4ade80; font-size: 1rem; }
+  </style>
 </head>
 <body>
 
@@ -39,192 +147,421 @@
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="promo.html">Promo</a></li>
           <li class="nav-item"><a class="nav-link" href="langganan.html">Langganan</a></li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
-          <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
-        </form>
+        <div class="d-flex align-items-center gap-2">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
+            <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
+          </form>
+          <a href="keranjang.html" class="btn btn-outline-light btn-sm cart-nav-btn" aria-label="Keranjang">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-count-badge" id="cartBadge">0</span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
 
   <!-- ==================== BANNER PROMO ==================== -->
-
-
   <section class="promo-banner">
     <div class="container text-center">
       <span class="sec-tag on-dark mb-3 d-inline-block">Penawaran Aktif</span>
       <h1 class="banner-title text-white">Promo &amp; Diskon Eksklusif</h1>
-      <p class="text-white-70 mt-2 mb-0">Jangan lewatkan penawaran terbatas ini — stok dan waktu sangat terbatas</p>
+      <p class="text-white-70 mt-2 mb-0">Filter promo sesuai kebutuhanmu — stok dan waktu sangat terbatas</p>
     </div>
   </section>
 
-  <!-- ==================== PROMO AKTIF ==================== -->
   <section class="sec-pad">
     <div class="container">
-      <div class="text-center mb-5">
-        <span class="sec-tag">Aktif Sekarang</span>
-        <h2 class="sec-title">Promo yang Sedang Berjalan</h2>
-        <p class="sec-sub">Gunakan kode promo sebelum kedaluwarsa</p>
+
+      <div class="text-center mb-4">
+        <span class="sec-tag">Penawaran Spesial</span>
+        <h2 class="sec-title">Temukan Promo Terbaik Untukmu</h2>
+        <p class="sec-sub">Pilih kategori promo sesuai kebutuhan — diskon harga atau bonus eksklusif</p>
       </div>
-      <div class="row g-4">
 
-        <!-- Promo 1 -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="promo-card">
-            <div class="promo-badge-hot">🔥 Terpopuler</div>
-            <div class="promo-card-head">
-              <h4>Early Bird Token</h4>
-              <div class="promo-disc">30% OFF</div>
-            </div>
-            <div class="promo-body">
-              <h5 class="promo-title">Diskon 30% Pembelian Token Batch Pertama</h5>
-              <p class="promo-desc">Khusus untuk 500 pembeli pertama batch launching token RubyAI. Harga normal $23 — dapatkan hanya $16.10.</p>
-              <div class="countdown-wrap" id="countdown1">
-                <div class="countdown-box"><span class="countdown-num" id="c1-h">02</span><span class="countdown-lbl">Jam</span></div>
-                <div class="countdown-box"><span class="countdown-num" id="c1-m">45</span><span class="countdown-lbl">Menit</span></div>
-                <div class="countdown-box"><span class="countdown-num" id="c1-s">30</span><span class="countdown-lbl">Detik</span></div>
-              </div>
-              <div class="promo-code-wrap">
-                <span class="promo-code">RUBY30</span>
-                <button class="promo-copy-btn" onclick="salinKode(this, 'RUBY30')" title="Salin kode">
-                  <i class="bi bi-copy"></i>
-                </button>
-              </div>
-              <a href="produk.html" class="btn btn-ruby w-100">Gunakan Promo</a>
-            </div>
-          </div>
+      <div class="row justify-content-center mb-4">
+        <div class="col-sm-4 col-md-3 col-lg-2">
+          <button class="btn btn-outline-warning filter-btn active w-100 fs-5"
+                  data-target="semua-promo">
+            &#127991; Semua
+          </button>
         </div>
-
-        <!-- Promo 2 -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="promo-card">
-            <div class="promo-card-head">
-              <h4>Bonus Staking</h4>
-              <div class="promo-disc">+5% APY</div>
-            </div>
-            <div class="promo-body">
-              <h5 class="promo-title">Bonus APY 5% untuk Staking Pertama</h5>
-              <p class="promo-desc">Aktifkan staking untuk pertama kali dan dapatkan bonus 5% APY selama 3 bulan pertama tanpa syarat tambahan.</p>
-              <div class="countdown-wrap">
-                <div class="countdown-box"><span class="countdown-num">14</span><span class="countdown-lbl">Hari</span></div>
-                <div class="countdown-box"><span class="countdown-num">08</span><span class="countdown-lbl">Jam</span></div>
-                <div class="countdown-box"><span class="countdown-num">22</span><span class="countdown-lbl">Menit</span></div>
-              </div>
-              <div class="promo-code-wrap">
-                <span class="promo-code">STAKE5X</span>
-                <button class="promo-copy-btn" onclick="salinKode(this, 'STAKE5X')" title="Salin kode">
-                  <i class="bi bi-copy"></i>
-                </button>
-              </div>
-              <a href="produk.html" class="btn btn-ruby w-100">Mulai Staking</a>
-            </div>
-          </div>
+        <div class="col-sm-4 col-md-3 col-lg-2">
+          <button class="btn btn-outline-warning filter-btn w-100 fs-5"
+                  data-target="promo-diskon">
+            &#128293; Diskon
+          </button>
         </div>
-
-        <!-- Promo 3 -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="promo-card">
-            <div class="promo-card-head">
-              <h4>Wallet Gratis</h4>
-              <div class="promo-disc">FREE</div>
-            </div>
-            <div class="promo-body">
-              <h5 class="promo-title">Wallet Pro Gratis 3 Bulan untuk Member Baru</h5>
-              <p class="promo-desc">Daftar sekarang dan nikmati fitur wallet premium selama 3 bulan penuh tanpa biaya. Berlaku untuk semua akun baru.</p>
-              <div class="countdown-wrap">
-                <div class="countdown-box"><span class="countdown-num">30</span><span class="countdown-lbl">Hari</span></div>
-                <div class="countdown-box"><span class="countdown-num">00</span><span class="countdown-lbl">Jam</span></div>
-                <div class="countdown-box"><span class="countdown-num">00</span><span class="countdown-lbl">Menit</span></div>
-              </div>
-              <div class="promo-code-wrap">
-                <span class="promo-code">NEWWALLET</span>
-                <button class="promo-copy-btn" onclick="salinKode(this, 'NEWWALLET')" title="Salin kode">
-                  <i class="bi bi-copy"></i>
-                </button>
-              </div>
-              <a href="langganan.html" class="btn btn-ruby w-100">Daftar Sekarang</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Promo 4 -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="promo-card">
-            <div class="promo-card-head">
-              <h4>Bundle Hemat</h4>
-              <div class="promo-disc">20% OFF</div>
-            </div>
-            <div class="promo-body">
-              <h5 class="promo-title">Beli 5 Token, Gratis 1 Token</h5>
-              <p class="promo-desc">Program bundle hemat untuk investor yang ingin membangun portofolio lebih cepat. Berlaku untuk semua jenis token.</p>
-              <div class="countdown-wrap">
-                <div class="countdown-box"><span class="countdown-num">07</span><span class="countdown-lbl">Hari</span></div>
-                <div class="countdown-box"><span class="countdown-num">12</span><span class="countdown-lbl">Jam</span></div>
-                <div class="countdown-box"><span class="countdown-num">44</span><span class="countdown-lbl">Menit</span></div>
-              </div>
-              <div class="promo-code-wrap">
-                <span class="promo-code">BUNDLE6</span>
-                <button class="promo-copy-btn" onclick="salinKode(this, 'BUNDLE6')" title="Salin kode">
-                  <i class="bi bi-copy"></i>
-                </button>
-              </div>
-              <a href="produk.html" class="btn btn-ruby w-100">Gunakan Promo</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Promo 5 -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="promo-card">
-            <div class="promo-card-head">
-              <h4>Upgrade Plan</h4>
-              <div class="promo-disc">15% OFF</div>
-            </div>
-            <div class="promo-body">
-              <h5 class="promo-title">Diskon 15% Upgrade ke Plan Pro atau Enterprise</h5>
-              <p class="promo-desc">Upgrade langganan wallet kamu ke tier lebih tinggi dan hemat 15% untuk pembayaran tahunan.</p>
-              <div class="countdown-wrap">
-                <div class="countdown-box"><span class="countdown-num">21</span><span class="countdown-lbl">Hari</span></div>
-                <div class="countdown-box"><span class="countdown-num">03</span><span class="countdown-lbl">Jam</span></div>
-                <div class="countdown-box"><span class="countdown-num">17</span><span class="countdown-lbl">Menit</span></div>
-              </div>
-              <div class="promo-code-wrap">
-                <span class="promo-code">UPGRD15</span>
-                <button class="promo-copy-btn" onclick="salinKode(this, 'UPGRD15')" title="Salin kode">
-                  <i class="bi bi-copy"></i>
-                </button>
-              </div>
-              <a href="langganan.html" class="btn btn-ruby w-100">Lihat Plan</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Promo 6 -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="promo-card">
-            <div class="promo-card-head">
-              <h4>Gas Fee Promo</h4>
-              <div class="promo-disc">0 FEE</div>
-            </div>
-            <div class="promo-body">
-              <h5 class="promo-title">Gratis Gas Fee untuk 100 Transaksi Pertama</h5>
-              <p class="promo-desc">Nikmati 100 transaksi pertama tanpa gas fee. Promo ini berlaku otomatis untuk semua akun baru yang mendaftar bulan ini.</p>
-              <div class="countdown-wrap">
-                <div class="countdown-box"><span class="countdown-num">28</span><span class="countdown-lbl">Hari</span></div>
-                <div class="countdown-box"><span class="countdown-num">16</span><span class="countdown-lbl">Jam</span></div>
-                <div class="countdown-box"><span class="countdown-num">55</span><span class="countdown-lbl">Menit</span></div>
-              </div>
-              <div class="promo-code-wrap">
-                <span class="promo-code">NOFEE100</span>
-                <button class="promo-copy-btn" onclick="salinKode(this, 'NOFEE100')" title="Salin kode">
-                  <i class="bi bi-copy"></i>
-                </button>
-              </div>
-              <a href="index.html#launching" class="btn btn-ruby w-100">Daftar Gratis</a>
-            </div>
-          </div>
+        <div class="col-sm-4 col-md-3 col-lg-2">
+          <button class="btn btn-outline-warning filter-btn w-100 fs-5"
+                  data-target="promo-bonus">
+            &#127873; Bonus
+          </button>
         </div>
       </div>
+
+      <section id="semua-promo" class="promo-section">
+        <div class="row g-4">
+
+          <!-- Card 1 — Diskon -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="block.jpeg" data-lightbox="semua-promo" data-title="Token RubyAI Batch 1 — Diskon 30%">
+                <img src="block.jpeg" class="card-img-top" alt="Token RubyAI Batch 1">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-hot">&#128293; 30% OFF — Terpopuler</span>
+                <h5 class="card-title">Token RubyAI Batch 1</h5>
+                <p class="card-text">Khusus 500 pembeli pertama batch launching. Harga terbaik sebelum listing publik resmi dimulai.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$23.00</span>
+                  <span class="promo-price-final">$16.10</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t1',nama:'Token RubyAI Batch 1',harga:16.10,hargaNormal:23.00,gambar:'block.jpeg',badge:'30% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 — Diskon -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="cvc.png" data-lightbox="semua-promo" data-title="Token CVC Early Bird — 15% OFF">
+                <img src="cvc.png" class="card-img-top" alt="Token CVC Early Bird">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-diskon">&#9889; 15% OFF — Early Bird</span>
+                <h5 class="card-title">Token CVC Early Bird</h5>
+                <p class="card-text">Harga eksklusif early adopter token CVC. Berlaku hingga slot 200 kuota pertama terpenuhi.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$60.00</span>
+                  <span class="promo-price-final">$51.00</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t2',nama:'Token CVC Early Bird',harga:51.00,hargaNormal:60.00,gambar:'cvc.png',badge:'15% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 — Diskon -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="fee.jpeg" data-lightbox="semua-promo" data-title="Bundle Hemat 5+1 — 20% OFF">
+                <img src="fee.jpeg" class="card-img-top" alt="Bundle Hemat 5+1">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-diskon">&#128176; 20% OFF — Bundle</span>
+                <h5 class="card-title">Bundle Hemat 5+1 Token</h5>
+                <p class="card-text">Beli 5 token gratis 1 token senilai sama. Berlaku untuk semua jenis token ekosistem RubyAI.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$115.00</span>
+                  <span class="promo-price-final">$92.00</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t3',nama:'Bundle Hemat 5+1 Token',harga:92.00,hargaNormal:115.00,gambar:'fee.jpeg',badge:'20% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 — Diskon -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="chp.png" data-lightbox="semua-promo" data-title="Upgrade Plan Tahunan — 15% OFF">
+                <img src="chp.png" class="card-img-top" alt="Upgrade Plan Tahunan">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-diskon">&#128197; 15% OFF — Tahunan</span>
+                <h5 class="card-title">Upgrade Plan Tahunan</h5>
+                <p class="card-text">Bayar plan Pro atau Enterprise tahunan, hemat 15%. Promo hanya untuk bulan ini.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$36.00</span>
+                  <span class="promo-price-final">$30.60</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t4',nama:'Upgrade Plan Tahunan',harga:30.60,hargaNormal:36.00,gambar:'chp.png',badge:'15% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 — Bonus -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="chp.png" data-lightbox="semua-promo" data-title="Staking CHP — Bonus +5% APY">
+                <img src="chp.png" class="card-img-top" alt="Staking CHP +5% APY">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#127873; Bonus +5% APY</span>
+                <h5 class="card-title">Staking CHP +5% APY</h5>
+                <p class="card-text">Aktifkan staking pertama dan dapatkan bonus APY 5% selama 3 bulan. Tanpa syarat tambahan.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">APY Normal: 12%</span>
+                  <span class="promo-price-final">17% APY</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t5',nama:'Staking CHP +5% APY',harga:45.00,hargaNormal:45.00,gambar:'chp.png',badge:'+5% APY'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 — Bonus -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="cs.png" data-lightbox="semua-promo" data-title="Wallet Pro Gratis 3 Bulan">
+                <img src="cs.png" class="card-img-top" alt="Wallet Pro Gratis 3 Bulan">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#127873; GRATIS — Member Baru</span>
+                <h5 class="card-title">Wallet Pro Gratis 3 Bulan</h5>
+                <p class="card-text">Daftar sekarang, nikmati wallet premium selama 3 bulan penuh tanpa biaya. Untuk akun baru.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$30.00</span>
+                  <span class="promo-price-final" style="color:#16a34a;">GRATIS</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t6',nama:'Wallet Pro Gratis 3 Bulan',harga:0.00,hargaNormal:30.00,gambar:'cs.png',badge:'GRATIS'})">
+                  <i class="bi bi-cart-plus me-1"></i> Klaim Sekarang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 — Bonus -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="gasfee.jpeg" data-lightbox="semua-promo" data-title="Gas Fee 0 — 100 Transaksi">
+                <img src="gasfee.jpeg" class="card-img-top" alt="Gas Fee 0">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#9981; 0 FEE — Akun Baru</span>
+                <h5 class="card-title">Gas Fee 0 (100 Transaksi)</h5>
+                <p class="card-text">100 transaksi pertama bebas gas fee. Aktif otomatis — tidak perlu kode promo tambahan.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">Fee Normal: $0.15/tx</span>
+                  <span class="promo-price-final" style="color:#16a34a;">$0 Fee</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t7',nama:'Gas Fee 0 (100 Transaksi)',harga:0.00,hargaNormal:15.00,gambar:'gasfee.jpeg',badge:'0 FEE'})">
+                  <i class="bi bi-cart-plus me-1"></i> Klaim Sekarang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 — Bonus -->
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="fast.jpeg" data-lightbox="semua-promo" data-title="Fast Transfer Bundle — Bonus 500 Poin">
+                <img src="fast.jpeg" class="card-img-top" alt="Fast Transfer Bundle">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#9889; BONUS 500 Poin</span>
+                <h5 class="card-title">Fast Transfer Bundle</h5>
+                <p class="card-text">Beli paket Fast Transfer, dapatkan 500 reward poin yang bisa ditukar token RubyAI kapan saja.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">Normal: $20.00</span>
+                  <span class="promo-price-final">$20.00 + Bonus</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t8',nama:'Fast Transfer Bundle',harga:20.00,hargaNormal:20.00,gambar:'fast.jpeg',badge:'BONUS 500 Poin'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="promo-diskon" class="promo-section" style="display:none">
+        <div class="row g-4">
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="block.jpeg" data-lightbox="promo-diskon" data-title="Token RubyAI Batch 1 — 30% OFF">
+                <img src="block.jpeg" class="card-img-top" alt="Token RubyAI Batch 1">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-hot">&#128293; 30% OFF — Terpopuler</span>
+                <h5 class="card-title">Token RubyAI Batch 1</h5>
+                <p class="card-text">Khusus 500 pembeli pertama. Slot hampir habis — harga akan naik setelah batch ini penuh.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$23.00</span>
+                  <span class="promo-price-final">$16.10</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t1',nama:'Token RubyAI Batch 1',harga:16.10,hargaNormal:23.00,gambar:'block.jpeg',badge:'30% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="cvc.png" data-lightbox="promo-diskon" data-title="Token CVC Early Bird — 15% OFF">
+                <img src="cvc.png" class="card-img-top" alt="Token CVC Early Bird">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-diskon">&#9889; 15% OFF — Early Bird</span>
+                <h5 class="card-title">Token CVC Early Bird</h5>
+                <p class="card-text">Harga eksklusif sebelum listing. Hanya 200 slot tersedia. Segera klaim sebelum kehabisan.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$60.00</span>
+                  <span class="promo-price-final">$51.00</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t2',nama:'Token CVC Early Bird',harga:51.00,hargaNormal:60.00,gambar:'cvc.png',badge:'15% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="fee.jpeg" data-lightbox="promo-diskon" data-title="Bundle Hemat 5+1 — 20% OFF">
+                <img src="fee.jpeg" class="card-img-top" alt="Bundle Hemat 5+1">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-diskon">&#128176; 20% OFF — Bundle</span>
+                <h5 class="card-title">Bundle Hemat 5+1 Token</h5>
+                <p class="card-text">Beli 5 token gratis 1 token setara nilai. Cocok untuk portofolio lebih besar dengan harga efisien.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$115.00</span>
+                  <span class="promo-price-final">$92.00</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t3',nama:'Bundle Hemat 5+1 Token',harga:92.00,hargaNormal:115.00,gambar:'fee.jpeg',badge:'20% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="chp.png" data-lightbox="promo-diskon" data-title="Upgrade Plan Tahunan — 15% OFF">
+                <img src="chp.png" class="card-img-top" alt="Upgrade Plan Tahunan">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-diskon">&#128197; 15% OFF — Tahunan</span>
+                <h5 class="card-title">Upgrade Plan Tahunan</h5>
+                <p class="card-text">Hemat 15% dengan pembayaran tahunan Plan Pro atau Enterprise. Berlaku hingga akhir bulan.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$36.00</span>
+                  <span class="promo-price-final">$30.60</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t4',nama:'Upgrade Plan Tahunan',harga:30.60,hargaNormal:36.00,gambar:'chp.png',badge:'15% OFF'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="promo-bonus" class="promo-section" style="display:none">
+        <div class="row g-4">
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="chp.png" data-lightbox="promo-bonus" data-title="Staking CHP — Bonus +5% APY">
+                <img src="chp.png" class="card-img-top" alt="Staking CHP +5% APY">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#127873; Bonus +5% APY</span>
+                <h5 class="card-title">Staking CHP +5% APY</h5>
+                <p class="card-text">Aktifkan staking pertama, dapatkan bonus APY 5% selama 3 bulan pertama. Tanpa syarat tambahan.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">APY Normal: 12%</span>
+                  <span class="promo-price-final">17% APY</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t5',nama:'Staking CHP +5% APY',harga:45.00,hargaNormal:45.00,gambar:'chp.png',badge:'+5% APY'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="cs.png" data-lightbox="promo-bonus" data-title="Wallet Pro Gratis 3 Bulan">
+                <img src="cs.png" class="card-img-top" alt="Wallet Pro Gratis">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#127873; GRATIS — Member Baru</span>
+                <h5 class="card-title">Wallet Pro Gratis 3 Bulan</h5>
+                <p class="card-text">Daftar sekarang dan nikmati wallet premium penuh 3 bulan tanpa biaya apapun. Akun baru saja.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">$30.00</span>
+                  <span class="promo-price-final" style="color:#16a34a;">GRATIS</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t6',nama:'Wallet Pro Gratis 3 Bulan',harga:0.00,hargaNormal:30.00,gambar:'cs.png',badge:'GRATIS'})">
+                  <i class="bi bi-cart-plus me-1"></i> Klaim Sekarang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="gasfee.jpeg" data-lightbox="promo-bonus" data-title="Gas Fee 0 — 100 Transaksi">
+                <img src="gasfee.jpeg" class="card-img-top" alt="Gas Fee 0">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#9981; 0 FEE — Akun Baru</span>
+                <h5 class="card-title">Gas Fee 0 (100 Transaksi)</h5>
+                <p class="card-text">100 transaksi pertama bebas gas fee. Aktif otomatis untuk semua akun baru yang daftar bulan ini.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">Normal: $0.15/tx</span>
+                  <span class="promo-price-final" style="color:#16a34a;">$0 Fee</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t7',nama:'Gas Fee 0 (100 Transaksi)',harga:0.00,hargaNormal:15.00,gambar:'gasfee.jpeg',badge:'0 FEE'})">
+                  <i class="bi bi-cart-plus me-1"></i> Klaim Sekarang
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3">
+            <div class="hovered-card">
+              <a href="fast.jpeg" data-lightbox="promo-bonus" data-title="Fast Transfer Bundle — Bonus 500 Poin">
+                <img src="fast.jpeg" class="card-img-top" alt="Fast Transfer Bundle">
+              </a>
+              <div class="card-body">
+                <span class="promo-badge-card badge-bonus">&#9889; BONUS 500 Poin</span>
+                <h5 class="card-title">Fast Transfer Bundle</h5>
+                <p class="card-text">Beli Fast Transfer, dapat 500 reward poin. Tukarkan kapanpun menjadi token RubyAI asli.</p>
+                <div class="promo-price-area">
+                  <span class="promo-price-normal">Normal: $20.00</span>
+                  <span class="promo-price-final">$20.00 + Bonus</span>
+                </div>
+                <button class="btn btn-ruby w-100 btn-sm"
+                  onclick="tambahKeranjang({id:'t8',nama:'Fast Transfer Bundle',harga:20.00,hargaNormal:20.00,gambar:'fast.jpeg',badge:'BONUS 500 Poin'})">
+                  <i class="bi bi-cart-plus me-1"></i> Tambah ke Keranjang
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
     </div>
   </section>
 
@@ -282,12 +619,12 @@
             <h2 class="sec-title">Syarat &amp; Ketentuan Promo</h2>
           </div>
           <ul class="list-unstyled" style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Setiap kode promo hanya dapat digunakan satu kali per akun.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Setiap promo hanya dapat diklaim satu kali per akun.</li>
             <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Promo tidak dapat digabungkan dengan promo lain kecuali disebutkan secara eksplisit.</li>
             <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>RubyAI berhak membatalkan promo sewaktu-waktu tanpa pemberitahuan sebelumnya.</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Kode promo hanya berlaku untuk pembelian langsung melalui platform resmi RubyAI.</li>
-            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Nilai promo tidak dapat diuangkan atau dipindahtangankan.</li>
-            <li><i class="bi bi-check-circle-fill text-ruby me-2"></i>Dengan menggunakan kode promo, pengguna dianggap telah membaca dan menyetujui syarat ini.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Promo hanya berlaku untuk pembelian langsung melalui platform resmi RubyAI.</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-ruby me-2"></i>Nilai promo tidak dapat diuangkan atau dipindahtangankan ke akun lain.</li>
+            <li><i class="bi bi-check-circle-fill text-ruby me-2"></i>Dengan mengklaim promo, pengguna dianggap telah membaca dan menyetujui syarat ini.</li>
           </ul>
         </div>
       </div>
@@ -336,7 +673,7 @@
             <li><a href="promo.html" class="footer-link">Promo</a></li>
             <li><a href="informasi.html" class="footer-link">Informasi</a></li>
             <li><a href="langganan.html" class="footer-link">Langganan</a></li>
-            <li><a href="index.html#launching" class="footer-link">Grand Launching</a></li>
+            <li><a href="keranjang.html" class="footer-link">Keranjang</a></li>
           </ul>
         </div>
         <div class="col-md-4">
@@ -353,37 +690,78 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
+  <div id="rubyToast">
+    <i class="bi bi-check-circle-fill"></i>
+    <span id="rubyToastMsg">Item ditambahkan!</span>
+  </div>
 
-    function salinKode(btn, kode) {
-      navigator.clipboard.writeText(kode).then(() => {
-        const icon = btn.querySelector('i');
-        icon.className = 'bi bi-check-lg';
-        btn.style.color = '#16a34a';
-        setTimeout(() => {
-          icon.className = 'bi bi-copy';
-          btn.style.color = '';
-        }, 2000);
+  <!-- ==================== SCRIPTS ==================== -->
+ <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+
+  <script>
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var sections   = ['semua-promo', 'promo-diskon', 'promo-bonus'];
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+
+        var target = this.getAttribute('data-target');
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+
+        sections.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (id === target) {
+            el.style.display = 'block';
+            el.classList.remove('promo-section');
+            void el.offsetWidth;
+            el.classList.add('promo-section');
+          } else {
+            el.style.display = 'none';
+          }
+        });
+
       });
+    });
+
+
+    function tambahKeranjang(produk) {
+      var keranjang = JSON.parse(localStorage.getItem('rubyai_keranjang') || '[]');
+      var idx = keranjang.findIndex(function(i) { return i.id === produk.id; });
+      if (idx > -1) {
+        keranjang[idx].qty += 1;
+      } else {
+        produk.qty = 1;
+        keranjang.push(produk);
+      }
+      localStorage.setItem('rubyai_keranjang', JSON.stringify(keranjang));
+      updateCartBadge();
+      showToast(produk.nama + ' ditambahkan ke keranjang!');
     }
 
-    (function() {
-      let jam = 2, menit = 45, detik = 30;
-      const h = document.getElementById('c1-h');
-      const m = document.getElementById('c1-m');
-      const s = document.getElementById('c1-s');
-      if (!h) return;
-      setInterval(() => {
-        detik--;
-        if (detik < 0) { detik = 59; menit--; }
-        if (menit < 0) { menit = 59; jam--; }
-        if (jam < 0) { jam = 0; menit = 0; detik = 0; }
-        h.textContent = String(jam).padStart(2,'0');
-        m.textContent = String(menit).padStart(2,'0');
-        s.textContent = String(detik).padStart(2,'0');
-      }, 1000);
-    })();
-  </script>
+    function updateCartBadge() {
+      var keranjang = JSON.parse(localStorage.getItem('rubyai_keranjang') || '[]');
+      var total = keranjang.reduce(function(s, i) { return s + i.qty; }, 0);
+      var badge = document.getElementById('cartBadge');
+      if (!badge) return;
+      badge.textContent = total > 99 ? '99+' : total;
+      total > 0 ? badge.classList.add('visible') : badge.classList.remove('visible');
+    }
+
+    var _toastTimer;
+    function showToast(msg) {
+      var toast = document.getElementById('rubyToast');
+      var msgEl = document.getElementById('rubyToastMsg');
+      if (!toast) return;
+      msgEl.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(_toastTimer);
+      _toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 2800);
+    }
+
+    updateCartBadge();
+  </script> -->
+
 </body>
 </html>

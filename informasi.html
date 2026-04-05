@@ -28,31 +28,27 @@
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav me-auto ms-3">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="produk.html">Token Produk</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="produk.html">Token Produk</a></li>
           <li class="nav-item">
             <a class="nav-link" href="https://docs.google.com/document/d/1hWPXfQ_zTvxP4cNS-nwSKMGz1EPxm1WU/edit?usp=drive_link&ouid=108765192675620260464&rtpof=true&sd=true" target="_blank" rel="noopener">
               White Paper
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="informasi.html">Informasi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="promo.html">Promo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="langganan.html">Langganan</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="informasi.html">Informasi</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="promo.html">Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="langganan.html">Langganan</a></li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
-          <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
-        </form>
+        <div class="d-flex align-items-center gap-2">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
+            <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
+          </form>
+          <a href="keranjang.html" class="btn btn-outline-light btn-sm cart-nav-btn" aria-label="Keranjang">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-count-badge" id="cartBadge">0</span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
