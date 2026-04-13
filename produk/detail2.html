@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Token Ruby AI Pro — Versi premium dengan akses eksklusif dan reward yang lebih besar.">
+  <title>Token Ruby AI Pro — RubyAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../main.js"></script>
+
+  <style>
+    .cart-nav-btn { position:relative;display:inline-flex;align-items:center; }
+    .cart-count-badge {
+      position:absolute;top:-6px;right:-8px;background:#ffc107;color:#000;
+      font-size:0.58rem;font-weight:800;width:17px;height:17px;border-radius:50%;
+      display:none;align-items:center;justify-content:center;
+    }
+    .cart-count-badge.visible { display:flex; }
+    #rubyToast {
+      position:fixed;bottom:28px;right:28px;z-index:9999;background:#111827;color:#fff;
+      padding:13px 20px;border-radius:12px;font-size:0.875rem;font-weight:500;
+      box-shadow:0 8px 32px rgba(0,0,0,0.28);transform:translateY(80px);opacity:0;
+      transition:all 0.35s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;
+      gap:10px;max-width:300px;pointer-events:none;
+    }
+    #rubyToast.show { transform:translateY(0);opacity:1; }
+    #rubyToast i { color:#4ade80; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg ruby-navbar" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Ruby<span class="brand-ai">AI</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto ms-3">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="../produk.html">Token Produk</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://docs.google.com/document/d/1hWPXfQ_zTvxP4cNS-nwSKMGz1EPxm1WU/edit?usp=drive_link&ouid=108765192675620260464&rtpof=true&sd=true" target="_blank" rel="noopener">White Paper</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="../informasi.html">Informasi</a></li>
+          <li class="nav-item"><a class="nav-link" href="../promo.html">Promo</a></li>
+          <li class="nav-item"><a class="nav-link" href="../langganan.html">Langganan</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 navbar-search" type="search" placeholder="Cari..." aria-label="Search">
+            <button class="btn btn-outline-light btn-sm px-3" type="submit">Cari</button>
+          </form>
+          <a href="../keranjang.html" class="btn btn-outline-light btn-sm cart-nav-btn" aria-label="Keranjang">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-count-badge" id="cartBadge">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container pt-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html" style="text-decoration:none;color:#C3110C;">Home</a></li>
+        <li class="breadcrumb-item"><a href="../produk.html" style="text-decoration:none;color:#C3110C;">Token Produk</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Token Ruby AI Pro</li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row g-0 px-3 px-md-5 py-4">
+      <div class="col-md-5 col-lg-4 mb-3">
+        <div style="border-radius:16px;overflow:hidden;border:1px solid #e5e7eb;box-shadow:0 2px 16px rgba(0,0,0,0.07);position:relative;">
+          <a href="../chp.png" data-lightbox="detail-2" data-title="Token Ruby AI Pro">
+            <img src="../chp.png" alt="Token Ruby AI Pro" class="img-fluid w-100" style="aspect-ratio:1/1;object-fit:cover;display:block;">
+          </a>
+        </div>
+        <div class="d-flex gap-2 mt-2">
+          <div style="width:60px;height:60px;border-radius:8px;overflow:hidden;border:2px solid #C3110C;cursor:pointer;">
+            <img src="../chp.png" style="width:100%;height:100%;object-fit:cover;" alt="thumb">
+          </div>
+          <div style="width:60px;height:60px;border-radius:8px;overflow:hidden;border:2px solid #e5e7eb;cursor:pointer;opacity:0.65;">
+            <img src="../chp.png" style="width:100%;height:100%;object-fit:cover;" alt="thumb">
+          </div>
+          <div style="width:60px;height:60px;border-radius:8px;overflow:hidden;border:2px solid #e5e7eb;cursor:pointer;opacity:0.65;">
+            <img src="../chp.png" style="width:100%;height:100%;object-fit:cover;" alt="thumb">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-7 col-lg-8 ps-md-4 ps-lg-5">
+        <span class="badge mb-3" style="background:#C3110C;font-size:0.75rem;padding:6px 14px;border-radius:100px;">Token</span>
+        <h1 style="font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3.5vw,2.2rem);color:#111827;letter-spacing:-0.5px;margin-bottom:12px;">Token Ruby AI Pro</h1>
+        <p style="font-size:0.95rem;color:#374151;line-height:1.75;border-left:3px solid #C3110C;padding-left:14px;margin-bottom:20px;">Token Ruby AI Pro adalah level premium dari ekosistem token RubyAI. Pemegang RAI Pro mendapatkan akses ke fitur eksklusif termasuk governance voting, priority staking slot, dan reward multiplier 2x dibandingkan token standar.</p>
+
+        <div style="font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;color:#C3110C;line-height:1;margin-bottom:6px;">$45</div>
+        <p style="font-size:0.8rem;color:#6b7280;margin-bottom:22px;">Harga per 1 token. Min. pembelian 1 token.</p>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <button class="btn btn-ruby px-4 py-2 fw-bold" onclick="addCart({id:'d2',nama:'Token Ruby AI Pro',harga:45.0,hargaNormal:45.0,gambar:'../chp.png',badge:'Token'});window.location.href='../keranjang.html'">
+            <i class="bi bi-bag-fill me-2"></i>Beli Sekarang
+          </button>
+          <button class="btn btn-outline-ruby px-4 py-2 fw-bold" onclick="addCart({id:'d2',nama:'Token Ruby AI Pro',harga:45.0,hargaNormal:45.0,gambar:'../chp.png',badge:'Token'})">
+            <i class="bi bi-cart-plus me-2"></i>Tambah Keranjang
+          </button>
+        </div>
+
+        <div class="d-flex flex-wrap gap-3" style="padding-top:18px;border-top:1px solid #e5e7eb;">
+          <span style="font-size:0.78rem;color:#6b7280;display:flex;align-items:center;gap:6px;"><i class="bi bi-shield-check-fill" style="color:#C3110C;"></i>Terverifikasi</span>
+          <span style="font-size:0.78rem;color:#6b7280;display:flex;align-items:center;gap:6px;"><i class="bi bi-lock-fill" style="color:#C3110C;"></i>Transaksi Aman</span>
+          <span style="font-size:0.78rem;color:#6b7280;display:flex;align-items:center;gap:6px;"><i class="bi bi-headset" style="color:#C3110C;"></i>Support 24/7</span>
+        </div>
+
+        <div class="mt-4 p-4" style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:16px;">
+          <h6 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:14px;">Spesifikasi</h6>
+          <table class="w-100">
+            <tbody>
+        <tr>
+          <td class="fw-semibold text-muted" style="width:45%;padding:10px 8px;border-bottom:1px solid #e5e7eb;">Blockchain</td>
+          <td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;">RubyChain v2.0</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold text-muted" style="width:45%;padding:10px 8px;border-bottom:1px solid #e5e7eb;">Total Supply</td>
+          <td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;">25,000,000 RAI-PRO</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold text-muted" style="width:45%;padding:10px 8px;border-bottom:1px solid #e5e7eb;">Standar Token</td>
+          <td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;">ERC-20 Compatible</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold text-muted" style="width:45%;padding:10px 8px;border-bottom:1px solid #e5e7eb;">Reward Multiplier</td>
+          <td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;">2x dari Token Standar</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold text-muted" style="width:45%;padding:10px 8px;border-bottom:1px solid #e5e7eb;">Governance</td>
+          <td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;">1 Token = 2 Voting Power</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold text-muted" style="width:45%;padding:10px 8px;border-bottom:1px solid #e5e7eb;">Min. Pembelian</td>
+          <td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;">1 Token ($45)</td>
+        </tr>
+        <tr>
+          <td class="fw-semibold text-muted" style="width:45%;padding:10px 8px;border-bottom:1px solid #e5e7eb;">Status</td>
+          <td style="padding:10px 8px;border-bottom:1px solid #e5e7eb;">VIP Batch — Terbatas</td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4">
+          <h6 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:12px;">Fitur Unggulan</h6>
+          <ul class="list-unstyled">
+          <li class="d-flex align-items-start gap-2 mb-2">
+            <i class="bi bi-check-circle-fill mt-1" style="color:#C3110C;font-size:0.85rem;flex-shrink:0;"></i>
+            <span style="font-size:0.875rem;">Reward multiplier 2x untuk semua aktivitas</span>
+          </li>
+          <li class="d-flex align-items-start gap-2 mb-2">
+            <i class="bi bi-check-circle-fill mt-1" style="color:#C3110C;font-size:0.85rem;flex-shrink:0;"></i>
+            <span style="font-size:0.875rem;">Akses fitur governance & voting proposal</span>
+          </li>
+          <li class="d-flex align-items-start gap-2 mb-2">
+            <i class="bi bi-check-circle-fill mt-1" style="color:#C3110C;font-size:0.85rem;flex-shrink:0;"></i>
+            <span style="font-size:0.875rem;">Priority slot staking tanpa antrian</span>
+          </li>
+          <li class="d-flex align-items-start gap-2 mb-2">
+            <i class="bi bi-check-circle-fill mt-1" style="color:#C3110C;font-size:0.85rem;flex-shrink:0;"></i>
+            <span style="font-size:0.875rem;">Early access ke semua produk baru RubyAI</span>
+          </li>
+          <li class="d-flex align-items-start gap-2 mb-2">
+            <i class="bi bi-check-circle-fill mt-1" style="color:#C3110C;font-size:0.85rem;flex-shrink:0;"></i>
+            <span style="font-size:0.875rem;">Badge Pro terverifikasi di dashboard</span>
+          </li>
+          <li class="d-flex align-items-start gap-2 mb-2">
+            <i class="bi bi-check-circle-fill mt-1" style="color:#C3110C;font-size:0.85rem;flex-shrink:0;"></i>
+            <span style="font-size:0.875rem;">Dedicated account manager RubyAI</span>
+          </li>
+          </ul>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4 pt-3" style="border-top:1px solid #e5e7eb;">
+          <a href="detail1.html" class="btn btn-sm btn-outline-secondary"><i class="bi bi-arrow-left me-1"></i>Token Ruby AI</a>
+          <a href="../produk.html" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-grid me-1"></i>Semua Produk
+          </a>
+          <a href="detail3.html" class="btn btn-sm btn-outline-secondary">Token Ruby AI Lite<i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid py-5 mt-5" style="background-color:#fef9ec;">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="sec-tag">Rekomendasi</span>
+        <h2 class="sec-title">Produk Lainnya</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center px-3">
+      <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb-3">
+        <a href="detail1.html" style="text-decoration:none;">
+          <div class="card h-100 border-0 shadow-sm" style="border-radius:12px;overflow:hidden;">
+            <img src="../chp.png" class="card-img-top" alt="Token Ruby AI" style="height:100px;object-fit:cover;">
+            <div class="card-body p-2 text-center">
+              <span class="badge mb-1" style="background:#C3110C;font-size:0.6rem;">Token</span>
+              <p class="card-text fw-semibold" style="font-size:0.72rem;color:#111827;line-height:1.3;margin:0;">Token Ruby AI</p>
+              <p style="font-size:0.78rem;color:#C3110C;font-weight:800;margin:4px 0 0;">$23</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb-3">
+        <a href="detail3.html" style="text-decoration:none;">
+          <div class="card h-100 border-0 shadow-sm" style="border-radius:12px;overflow:hidden;">
+            <img src="../chp.png" class="card-img-top" alt="Token Ruby AI Lite" style="height:100px;object-fit:cover;">
+            <div class="card-body p-2 text-center">
+              <span class="badge mb-1" style="background:#C3110C;font-size:0.6rem;">Token</span>
+              <p class="card-text fw-semibold" style="font-size:0.72rem;color:#111827;line-height:1.3;margin:0;">Token Ruby AI Lite</p>
+              <p style="font-size:0.78rem;color:#C3110C;font-weight:800;margin:4px 0 0;">$12</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb-3">
+        <a href="detail4.html" style="text-decoration:none;">
+          <div class="card h-100 border-0 shadow-sm" style="border-radius:12px;overflow:hidden;">
+            <img src="../cvc.png" class="card-img-top" alt="Dompet Staking Crypto" style="height:100px;object-fit:cover;">
+            <div class="card-body p-2 text-center">
+              <span class="badge mb-1" style="background:#166534;font-size:0.6rem;">Staking</span>
+              <p class="card-text fw-semibold" style="font-size:0.72rem;color:#111827;line-height:1.3;margin:0;">Dompet Staking Crypto</p>
+              <p style="font-size:0.78rem;color:#C3110C;font-weight:800;margin:4px 0 0;">12% APY</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb-3">
+        <a href="detail5.html" style="text-decoration:none;">
+          <div class="card h-100 border-0 shadow-sm" style="border-radius:12px;overflow:hidden;">
+            <img src="../cvc.png" class="card-img-top" alt="Staking Plus+" style="height:100px;object-fit:cover;">
+            <div class="card-body p-2 text-center">
+              <span class="badge mb-1" style="background:#166534;font-size:0.6rem;">Staking</span>
+              <p class="card-text fw-semibold" style="font-size:0.72rem;color:#111827;line-height:1.3;margin:0;">Staking Plus+</p>
+              <p style="font-size:0.78rem;color:#C3110C;font-weight:800;margin:4px 0 0;">23% APY</p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-sm-6 col-md-3 col-lg-2 mb-3">
+        <a href="detail6.html" style="text-decoration:none;">
+          <div class="card h-100 border-0 shadow-sm" style="border-radius:12px;overflow:hidden;">
+            <img src="../cvc.png" class="card-img-top" alt="Staking Premium" style="height:100px;object-fit:cover;">
+            <div class="card-body p-2 text-center">
+              <span class="badge mb-1" style="background:#166534;font-size:0.6rem;">Staking</span>
+              <p class="card-text fw-semibold" style="font-size:0.72rem;color:#111827;line-height:1.3;margin:0;">Staking Premium</p>
+              <p style="font-size:0.78rem;color:#C3110C;font-weight:800;margin:4px 0 0;">35% APY</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="subscribe-section">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Temui Kami Di</h5>
+          <p class="text-muted small mb-3">Ikuti kami di media sosial untuk update terbaru</p>
+          <div class="d-flex gap-3">
+            <a href="https://facebook.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com/" target="_blank" rel="noopener" class="social-btn" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://youtube.com/" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-1">Subscribe</h5>
+          <p class="text-muted small mb-3">Informasi terbaru langsung ke inbox kamu</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Masukkan email kamu" aria-label="Email subscribe">
+            <button class="btn btn-ruby px-4" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4 text-center text-md-start">
+        <div class="col-md-4">
+          <h5 class="fw-bold text-white mb-2">RubyAI</h5>
+          <p class="text-secondary small">Solusi Keamanan Uang Digital untuk semua kalangan.<br>Aman, transparan, dan terpercaya.</p>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Navigasi</h6>
+          <ul class="list-unstyled">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="../produk.html" class="footer-link">Token Produk</a></li>
+            <li><a href="../promo.html" class="footer-link">Promo</a></li>
+            <li><a href="../informasi.html" class="footer-link">Informasi</a></li>
+            <li><a href="../langganan.html" class="footer-link">Langganan</a></li>
+            <li><a href="../keranjang.html" class="footer-link">Keranjang</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-bold text-white mb-3">Kontak</h6>
+          <ul class="list-unstyled text-secondary small">
+            <li class="mb-2"><i class="bi bi-geo-alt-fill me-2 text-ruby"></i>Jl. Pekan Baru No. 7, Mojokerto</li>
+            <li class="mb-2"><i class="bi bi-telephone-fill me-2 text-ruby"></i>+62 888-307-9611</li>
+            <li><i class="bi bi-envelope-fill me-2 text-ruby"></i>info@rubyai.id</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-secondary mt-4 mb-3">
+      <p class="text-center text-secondary small mb-0">&copy; 2025 RubyAI. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div id="rubyToast">
+    <i class="bi bi-check-circle-fill"></i>
+    <span id="rubyToastMsg">Item ditambahkan!</span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
+  
+</body>
+</html>

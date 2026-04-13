@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
 
   <style>
     .filter-btn {
@@ -79,6 +80,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ===== PROMO PRICE AREA ===== */
     .promo-price-area {
       display: flex; align-items: center;
       justify-content: space-between; margin-bottom: 12px;
@@ -97,7 +99,6 @@
     .badge-diskon { background:#fee2e2; color:var(--ruby-red); }
     .badge-bonus  { background:#d1fae5; color:#065f46; }
     .badge-hot    { background:var(--ruby-red); color:#fff; }
-
 
     .cart-nav-btn { position: relative; display: inline-flex; align-items: center; }
     .cart-count-badge {
@@ -173,12 +174,15 @@
   <section class="sec-pad">
     <div class="container">
 
+      <!-- Section Header -->
       <div class="text-center mb-4">
         <span class="sec-tag">Penawaran Spesial</span>
         <h2 class="sec-title">Temukan Promo Terbaik Untukmu</h2>
         <p class="sec-sub">Pilih kategori promo sesuai kebutuhan — diskon harga atau bonus eksklusif</p>
       </div>
 
+      <!-- ===== FILTER BUTTON (modul guru: row justify-content-center mb-4,
+           col-sm-4 col-md-3 col-lg-2, btn-outline-warning, filter-btn, active, w-100, fs-5) ===== -->
       <div class="row justify-content-center mb-4">
         <div class="col-sm-4 col-md-3 col-lg-2">
           <button class="btn btn-outline-warning filter-btn active w-100 fs-5"
@@ -200,6 +204,10 @@
         </div>
       </div>
 
+      <!-- ==============================================================
+           SECTION #semua-promo — 8 Card (tampil default)
+           (modul guru: section ID harus identik dengan data-target)
+           ============================================================== -->
       <section id="semua-promo" class="promo-section">
         <div class="row g-4">
 
@@ -380,8 +388,11 @@
           </div>
 
         </div>
-      </section>
+      </section><!-- /#semua-promo -->
 
+      <!-- ==============================================================
+           SECTION #promo-diskon — 4 Card (display:none default)
+           ============================================================== -->
       <section id="promo-diskon" class="promo-section" style="display:none">
         <div class="row g-4">
 
@@ -470,8 +481,11 @@
           </div>
 
         </div>
-      </section>
+      </section><!-- /#promo-diskon -->
 
+      <!-- ==============================================================
+           SECTION #promo-bonus — 4 Card (display:none default)
+           ============================================================== -->
       <section id="promo-bonus" class="promo-section" style="display:none">
         <div class="row g-4">
 
@@ -560,7 +574,7 @@
           </div>
 
         </div>
-      </section>
+      </section><!-- /#promo-bonus -->
 
     </div>
   </section>
@@ -696,72 +710,8 @@
   </div>
 
   <!-- ==================== SCRIPTS ==================== -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
-
-  <script>
-    var filterBtns = document.querySelectorAll('.filter-btn');
-    var sections   = ['semua-promo', 'promo-diskon', 'promo-bonus'];
-
-    filterBtns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-
-        var target = this.getAttribute('data-target');
-        filterBtns.forEach(function(b) { b.classList.remove('active'); });
-        this.classList.add('active');
-
-        sections.forEach(function(id) {
-          var el = document.getElementById(id);
-          if (id === target) {
-            el.style.display = 'block';
-            el.classList.remove('promo-section');
-            void el.offsetWidth;
-            el.classList.add('promo-section');
-          } else {
-            el.style.display = 'none';
-          }
-        });
-
-      });
-    });
-
-
-    function tambahKeranjang(produk) {
-      var keranjang = JSON.parse(localStorage.getItem('rubyai_keranjang') || '[]');
-      var idx = keranjang.findIndex(function(i) { return i.id === produk.id; });
-      if (idx > -1) {
-        keranjang[idx].qty += 1;
-      } else {
-        produk.qty = 1;
-        keranjang.push(produk);
-      }
-      localStorage.setItem('rubyai_keranjang', JSON.stringify(keranjang));
-      updateCartBadge();
-      showToast(produk.nama + ' ditambahkan ke keranjang!');
-    }
-
-    function updateCartBadge() {
-      var keranjang = JSON.parse(localStorage.getItem('rubyai_keranjang') || '[]');
-      var total = keranjang.reduce(function(s, i) { return s + i.qty; }, 0);
-      var badge = document.getElementById('cartBadge');
-      if (!badge) return;
-      badge.textContent = total > 99 ? '99+' : total;
-      total > 0 ? badge.classList.add('visible') : badge.classList.remove('visible');
-    }
-
-    var _toastTimer;
-    function showToast(msg) {
-      var toast = document.getElementById('rubyToast');
-      var msgEl = document.getElementById('rubyToastMsg');
-      if (!toast) return;
-      msgEl.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(_toastTimer);
-      _toastTimer = setTimeout(function() { toast.classList.remove('show'); }, 2800);
-    }
-
-    updateCartBadge();
-  </script>
 
 </body>
 </html>
